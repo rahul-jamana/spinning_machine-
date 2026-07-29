@@ -3,43 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AgriTech 2026 | Hackathon Problem Statement Spinner</title>
-  <!-- Google Fonts -->
+  <title>Interdisciplinary Hackathon Problem Statement Spinner</title>
+  <!-- Google Fonts: Inter & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
-       DESIGN SYSTEM & CSS VARIABLES ("Field Meets Circuit")
+       CLASSIC CORPORATE & ACADEMIC DESIGN SYSTEM
        ========================================================================== */
     :root {
-      --bg-dark: #070d0f;
-      --bg-card: #0e191d;
-      --bg-card-hover: #14242a;
-      --bg-panel: #112026;
-      --border-color: #1e363f;
-      --border-glow: #10b98144;
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-alt: #f1f5f9;
+      --border-color: #cbd5e1;
+      --border-dark: #94a3b8;
       
-      --accent-emerald: #10b981;
-      --accent-cyan: #06b6d4;
-      --accent-amber: #f59e0b;
-      --accent-purple: #8b5cf6;
-      --accent-danger: #ef4444;
+      --primary: #1e3a8a;
+      --primary-hover: #1e40af;
+      --accent-blue: #2563eb;
+      --accent-green: #15803d;
+      --accent-amber: #b45309;
+      --accent-red: #dc2626;
       
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --text-dim: #64748b;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-light: #64748b;
 
-      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
-      --font-body: 'Inter', -apple-system, sans-serif;
+      --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       
-      --radius-sm: 8px;
-      --radius-md: 14px;
-      --radius-lg: 20px;
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
       
-      --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.15);
-      --shadow-amber: 0 0 25px rgba(245, 158, 11, 0.15);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
     }
 
     * {
@@ -49,17 +50,11 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-body);
       color: var(--text-main);
       font-family: var(--font-body);
       min-height: 100vh;
-      overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+      line-height: 1.5;
     }
 
     /* Scrollbar */
@@ -68,30 +63,25 @@
       height: 8px;
     }
     ::-webkit-scrollbar-track {
-      background: var(--bg-dark);
+      background: var(--bg-body);
     }
     ::-webkit-scrollbar-thumb {
       background: var(--border-color);
       border-radius: 4px;
     }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--accent-emerald);
-    }
 
-    /* Container Layout */
+    /* Header */
     .app-header {
-      border-bottom: 1px solid var(--border-color);
-      background: rgba(14, 25, 29, 0.85);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--primary);
+      color: #ffffff;
+      border-bottom: 3px solid var(--accent-blue);
+      box-shadow: var(--shadow-sm);
     }
 
     .header-inner {
-      max-width: 1300px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -99,75 +89,52 @@
       gap: 1rem;
     }
 
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .brand-icon {
-      width: 42px;
-      height: 42px;
-      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
-      border-radius: var(--radius-sm);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
-    }
-
     .brand-title {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
-      background: linear-gradient(to right, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.01em;
+      color: #ffffff;
     }
 
     .brand-subtitle {
-      font-size: 0.75rem;
-      color: var(--accent-emerald);
+      font-size: 0.8rem;
+      color: #93c5fd;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.08em;
       font-weight: 600;
+      margin-top: 2px;
     }
 
     /* Navigation Tabs */
     .nav-tabs {
       display: flex;
-      background: rgba(7, 13, 15, 0.6);
+      background: rgba(255, 255, 255, 0.1);
       padding: 4px;
       border-radius: var(--radius-md);
-      border: 1px solid var(--border-color);
     }
 
     .tab-btn {
       background: transparent;
       border: none;
-      color: var(--text-muted);
-      padding: 0.6rem 1.2rem;
+      color: #cbd5e1;
+      padding: 0.5rem 1.25rem;
       border-radius: var(--radius-sm);
-      font-family: var(--font-heading);
+      font-family: var(--font-body);
       font-weight: 600;
       font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
     }
 
     .tab-btn:hover {
-      color: var(--text-main);
+      color: #ffffff;
     }
 
     .tab-btn.active {
-      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
-      color: var(--accent-emerald);
-      border: 1px solid var(--border-glow);
+      background: #ffffff;
+      color: var(--primary);
+      box-shadow: var(--shadow-sm);
     }
 
     .stat-pills {
@@ -176,25 +143,22 @@
     }
 
     .stat-pill {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 0.35rem 0.75rem;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
       font-size: 0.8rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      color: #ffffff;
     }
 
     .stat-pill span {
-      color: var(--accent-emerald);
       font-weight: 700;
+      color: #93c5fd;
     }
 
     /* Main Container */
     .main-container {
-      max-width: 1300px;
+      max-width: 1280px;
       margin: 2rem auto;
       padding: 0 1.5rem;
     }
@@ -205,60 +169,39 @@
 
     .tab-content.active {
       display: block;
-      animation: fadeIn 0.3s ease;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ==========================================================================
-       SPINNER VIEW LAYOUT
-       ========================================================================== */
-    .spinner-grid {
+    /* Layout Grid */
+    .grid-spinner {
       display: grid;
-      grid-template-columns: 380px 1fr;
+      grid-template-columns: 360px 1fr;
       gap: 2rem;
       align-items: start;
     }
 
-    @media (max-width: 1024px) {
-      .spinner-grid {
+    @media (max-width: 992px) {
+      .grid-spinner {
         grid-template-columns: 1fr;
       }
     }
 
-    /* Cards & Panels */
+    /* Panel Card */
     .panel {
-      background: var(--bg-card);
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-lg);
+      border-radius: var(--radius-md);
       padding: 1.75rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .panel::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, var(--accent-emerald), transparent);
+      box-shadow: var(--shadow-sm);
     }
 
     .panel-title {
       font-family: var(--font-heading);
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
+      color: var(--primary);
       margin-bottom: 1.25rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      color: var(--text-main);
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--bg-alt);
     }
 
     .form-group {
@@ -270,64 +213,49 @@
       font-size: 0.85rem;
       font-weight: 600;
       color: var(--text-muted);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
 
     .form-input, .form-select {
       width: 100%;
-      background: var(--bg-dark);
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 0.75rem 1rem;
+      padding: 0.65rem 0.85rem;
       color: var(--text-main);
       font-family: var(--font-body);
       font-size: 0.95rem;
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease;
     }
 
     .form-input:focus, .form-select:focus {
       outline: none;
-      border-color: var(--accent-emerald);
-      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     }
 
-    /* Category Badge Box */
+    /* Category Box */
     .category-box {
-      background: var(--bg-dark);
-      border: 1px dashed var(--border-color);
-      border-radius: var(--radius-md);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
       padding: 1.25rem;
       text-align: center;
       margin-top: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .category-box.active {
-      border-style: solid;
-      border-color: var(--accent-emerald);
-      background: rgba(16, 185, 129, 0.04);
-      box-shadow: var(--shadow-glow);
     }
 
     .category-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
-      color: #041116;
+      display: inline-block;
+      background: var(--primary);
+      color: #ffffff;
       font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 1.1rem;
-      padding: 0.5rem 1.25rem;
-      border-radius: 30px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 0.4rem 1.2rem;
+      border-radius: 4px;
       margin-top: 0.5rem;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-    }
-
-    .badge-icon {
-      font-size: 1.1rem;
     }
 
     /* Wheel Section */
@@ -342,15 +270,12 @@
 
     .canvas-wrapper {
       position: relative;
-      width: 480px;
-      height: 480px;
+      width: 460px;
+      height: 460px;
       max-width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
-    @media (max-width: 540px) {
+    @media (max-width: 520px) {
       .canvas-wrapper {
         width: 320px;
         height: 320px;
@@ -361,120 +286,102 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.2);
+      border: 6px solid var(--primary);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Pointer Arrow */
     .wheel-pointer {
       position: absolute;
-      top: -12px;
+      top: -10px;
       left: 50%;
       transform: translateX(-50%);
       width: 0;
       height: 0;
-      border-left: 18px solid transparent;
-      border-right: 18px solid transparent;
-      border-top: 32px solid var(--accent-amber);
-      filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.6));
+      border-left: 16px solid transparent;
+      border-right: 16px solid transparent;
+      border-top: 28px solid var(--accent-red);
       z-index: 10;
     }
 
     .spin-btn {
       margin-top: 1.75rem;
-      background: linear-gradient(135deg, var(--accent-emerald), #059669);
-      color: #041116;
+      background: var(--primary);
+      color: #ffffff;
       border: none;
-      padding: 1rem 3rem;
-      border-radius: 40px;
+      padding: 0.85rem 2.5rem;
+      border-radius: var(--radius-sm);
       font-family: var(--font-heading);
-      font-size: 1.2rem;
-      font-weight: 800;
-      letter-spacing: 0.05em;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
       cursor: pointer;
-      transition: all 0.25 ease;
-      box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      transition: background-color 0.2s ease;
+      box-shadow: var(--shadow-sm);
     }
 
     .spin-btn:hover:not(:disabled) {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
+      background: var(--primary-hover);
     }
 
     .spin-btn:disabled {
-      opacity: 0.4;
+      opacity: 0.5;
       cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
     }
 
-    /* ==========================================================================
-       ASSIGNED TICKET / LOCKED CARD
-       ========================================================================== */
+    /* Assigned Ticket */
     .ticket-card {
-      background: linear-gradient(145deg, #0e1c20, #13242a);
-      border: 2px solid var(--accent-emerald);
-      border-radius: var(--radius-lg);
-      padding: 2.25rem;
+      background: #ffffff;
+      border: 2px solid var(--accent-green);
+      border-radius: var(--radius-md);
+      padding: 2rem;
       margin-top: 1.5rem;
       position: relative;
-      overflow: hidden;
-      box-shadow: var(--shadow-glow);
-      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    @keyframes popIn {
-      0% { opacity: 0; transform: scale(0.9); }
-      100% { opacity: 1; transform: scale(1); }
+      box-shadow: var(--shadow-md);
     }
 
     .ticket-stamp {
       position: absolute;
-      top: 20px;
-      right: 20px;
-      border: 3px double var(--accent-amber);
-      color: var(--accent-amber);
+      top: 18px;
+      right: 18px;
+      border: 2px solid var(--accent-green);
+      color: var(--accent-green);
       font-family: var(--font-heading);
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 0.15em;
-      padding: 0.4rem 0.9rem;
-      border-radius: 6px;
-      transform: rotate(6deg);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
       text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+      background: #f0fdf4;
     }
 
     .ticket-header {
-      font-size: 0.8rem;
-      color: var(--accent-cyan);
+      font-size: 0.75rem;
+      color: var(--text-light);
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .ticket-title {
       font-family: var(--font-heading);
-      font-size: 1.6rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--text-main);
       margin-bottom: 1rem;
-      line-height: 1.3;
-      padding-right: 120px;
+      padding-right: 140px;
     }
 
     .ticket-desc {
       color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.65;
+      font-size: 0.95rem;
+      line-height: 1.6;
       margin-bottom: 1.5rem;
-      background: rgba(7, 13, 15, 0.5);
-      padding: 1.25rem;
+      background: var(--bg-alt);
+      padding: 1rem 1.25rem;
       border-radius: var(--radius-sm);
-      border-left: 3px solid var(--accent-emerald);
+      border-left: 4px solid var(--primary);
     }
 
     .ticket-meta {
@@ -490,54 +397,85 @@
     }
 
     .meta-team {
-      color: var(--accent-emerald);
+      color: var(--primary);
       font-weight: 700;
-      font-size: 1rem;
     }
 
-    /* ==========================================================================
-       ADMIN DESK STYLES
-       ========================================================================== */
+    /* Buttons */
+    .btn {
+      background: var(--bg-surface);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.55rem 1.1rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn:hover {
+      background: var(--bg-alt);
+      border-color: var(--border-dark);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-danger {
+      background: #fef2f2;
+      color: var(--accent-red);
+      border: 1px solid #fca5a5;
+    }
+
+    .btn-danger:hover {
+      background: #fee2e2;
+    }
+
+    .btn-sm {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.78rem;
+    }
+
+    /* Admin Table & Controls */
     .admin-stats {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1.25rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
     }
 
     .admin-stat-card {
-      background: var(--bg-card);
+      background: var(--bg-surface);
       border: 1px solid var(--border-color);
       padding: 1.25rem;
       border-radius: var(--radius-md);
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: var(--radius-sm);
-      background: rgba(16, 185, 129, 0.1);
-      color: var(--accent-emerald);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
+      box-shadow: var(--shadow-sm);
     }
 
     .stat-value {
       font-family: var(--font-heading);
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--primary);
     }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
+      font-weight: 600;
     }
 
     .admin-grid {
@@ -552,7 +490,6 @@
       }
     }
 
-    /* Data Table */
     .table-controls {
       display: flex;
       gap: 1rem;
@@ -563,159 +500,112 @@
     .table-wrapper {
       overflow-x: auto;
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
-      background: var(--bg-dark);
+      border-radius: var(--radius-sm);
+      background: var(--bg-surface);
     }
 
     .data-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
 
     .data-table th {
-      background: var(--bg-panel);
-      color: var(--text-muted);
-      font-family: var(--font-heading);
+      background: var(--bg-alt);
+      color: var(--text-main);
+      font-family: var(--font-body);
       font-weight: 600;
-      padding: 0.9rem 1rem;
-      border-bottom: 1px solid var(--border-color);
+      padding: 0.75rem 0.9rem;
+      border-bottom: 2px solid var(--border-color);
       text-transform: uppercase;
       font-size: 0.75rem;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.03em;
     }
 
     .data-table td {
-      padding: 0.9rem 1rem;
+      padding: 0.75rem 0.9rem;
       border-bottom: 1px solid var(--border-color);
       color: var(--text-main);
       vertical-align: middle;
     }
 
-    .data-table tr:hover td {
-      background: rgba(255, 255, 255, 0.02);
+    .data-table tr:nth-child(even) td {
+      background: #fafafa;
     }
 
     .badge {
       display: inline-block;
-      padding: 0.25rem 0.6rem;
-      border-radius: 12px;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
     }
 
     .badge-open {
-      background: rgba(16, 185, 129, 0.15);
-      color: var(--accent-emerald);
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      background: #dcfce7;
+      color: #166534;
+      border: 1px solid #86efac;
     }
 
     .badge-assigned {
-      background: rgba(245, 158, 11, 0.15);
-      color: var(--accent-amber);
-      border: 1px solid rgba(245, 158, 11, 0.3);
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
     }
 
-    .btn {
-      background: var(--bg-card);
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
-      padding: 0.6rem 1.25rem;
+    /* Alerts */
+    .alert-banner {
+      padding: 0.85rem 1.1rem;
       border-radius: var(--radius-sm);
-      font-family: var(--font-heading);
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1px solid transparent;
     }
 
-    .btn:hover {
-      background: var(--bg-card-hover);
-      border-color: var(--text-muted);
+    .alert-info {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1e40af;
     }
 
-    .btn-primary {
-      background: var(--accent-emerald);
-      color: #041116;
-      border: none;
+    .alert-success {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #166534;
     }
 
-    .btn-primary:hover {
-      background: #0d9668;
-    }
-
-    .btn-danger {
-      background: rgba(239, 68, 68, 0.15);
-      color: var(--accent-danger);
-      border: 1px solid rgba(239, 68, 68, 0.3);
-    }
-
-    .btn-danger:hover {
-      background: rgba(239, 68, 68, 0.25);
-    }
-
-    .btn-sm {
-      padding: 0.3rem 0.6rem;
-      font-size: 0.75rem;
-    }
-
-    /* Modals & Alerts */
-    .alert-box {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid var(--accent-amber);
-      color: var(--accent-amber);
-      padding: 1rem;
-      border-radius: var(--radius-sm);
-      margin-bottom: 1.25rem;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .confetti-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 999;
+    .alert-danger {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #991b1b;
     }
   </style>
 </head>
 <body>
 
-  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
-
   <!-- APP HEADER -->
   <header class="app-header">
     <div class="header-inner">
-      <div class="brand">
-        <div class="brand-icon">🌱</div>
-        <div>
-          <h1 class="brand-title">AGRI-TECH 2026</h1>
-          <div class="brand-subtitle">Cross-Discipline Problem Spinner</div>
-        </div>
+      <div>
+        <h1 class="brand-title">Interdisciplinary Hackathon</h1>
+        <div class="brand-subtitle">Problem Statement Assignment Portal</div>
       </div>
 
       <nav class="nav-tabs">
         <button class="tab-btn active" onclick="switchTab('spinner')">
-          🎯 Team Spinner
+          Team Spinner
         </button>
         <button class="tab-btn" onclick="switchTab('admin')">
-          🛠️ Organizer Desk
+          Organizer Panel
         </button>
       </nav>
 
       <div class="stat-pills">
-        <div class="stat-pill">Total: <span id="headerTotalCount">0</span></div>
-        <div class="stat-pill">Open: <span id="headerOpenCount">0</span></div>
+        <div class="stat-pill">Total Problems: <span id="headerTotalCount">0</span></div>
+        <div class="stat-pill">Available: <span id="headerOpenCount">0</span></div>
         <div class="stat-pill">Assigned: <span id="headerAssignedCount">0</span></div>
       </div>
     </div>
@@ -724,46 +614,55 @@
   <!-- MAIN CONTAINER -->
   <main class="main-container">
 
+    <!-- System Notification Banner -->
+    <div id="systemBanner" style="display: none;"></div>
+
     <!-- ==========================================================================
          TAB 1: TEAM SPINNER
          ========================================================================== -->
     <div id="tab-spinner" class="tab-content active">
-      <div class="spinner-grid">
+      <div class="grid-spinner">
 
         <!-- Left Form Panel -->
         <div class="panel">
-          <h2 class="panel-title">👥 Team Registration</h2>
+          <h2 class="panel-title">Team Registration</h2>
 
           <div class="form-group">
             <label class="form-label" for="teamNameInput">Team Name</label>
-            <input type="text" id="teamNameInput" class="form-input" placeholder="e.g. AgriCode Pioneers" oninput="updateTeamCategory()">
+            <input type="text" id="teamNameInput" class="form-input" placeholder="e.g. Apex Engineering Team" oninput="updateTeamCategory()">
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="member1Select">Member 1 Background</label>
+            <label class="form-label" for="member1Select">Member 1 Specialization</label>
             <select id="member1Select" class="form-select" onchange="updateTeamCategory()">
-              <option value="CS">💻 Computer Science (CS)</option>
-              <option value="DS">📊 Data Science (DS)</option>
-              <option value="Agri">🌾 Agriculture (Agri)</option>
+              <option value="Aero">Aerospace Engineering (Aero)</option>
+              <option value="Agri">Agriculture (Agri)</option>
+              <option value="Civil">Civil Engineering (Civil)</option>
+              <option value="CS" selected>Computer Science (CS)</option>
+              <option value="DS">Data Science (DS)</option>
+              <option value="Mech">Mechanical Engineering (Mech)</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="member2Select">Member 2 Background</label>
+            <label class="form-label" for="member2Select">Member 2 Specialization</label>
             <select id="member2Select" class="form-select" onchange="updateTeamCategory()">
-              <option value="Agri" selected>🌾 Agriculture (Agri)</option>
-              <option value="CS">💻 Computer Science (CS)</option>
-              <option value="DS">📊 Data Science (DS)</option>
+              <option value="Aero">Aerospace Engineering (Aero)</option>
+              <option value="Agri" selected>Agriculture (Agri)</option>
+              <option value="Civil">Civil Engineering (Civil)</option>
+              <option value="CS">Computer Science (CS)</option>
+              <option value="DS">Data Science (DS)</option>
+              <option value="Mech">Mechanical Engineering (Mech)</option>
             </select>
           </div>
 
-          <div id="categoryBox" class="category-box active">
-            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Automated Team Category</div>
+          <div id="categoryBox" class="category-box">
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Calculated Team Category</div>
             <div id="categoryTag" class="category-tag">
-              <span class="badge-icon">🌾💻</span> Agri + CS
+              Agri + CS
             </div>
-            <div id="categoryStock" style="font-size: 0.8rem; color: var(--accent-emerald); margin-top: 0.5rem; font-weight: 600;">
-              4 Open Problems Available
+            <div id="categoryStock" style="font-size: 0.82rem; color: var(--accent-green); margin-top: 0.5rem; font-weight: 600;">
+              Available Problems: 0
             </div>
           </div>
 
@@ -776,30 +675,30 @@
           <div id="wheelWrapper" class="wheel-container">
             <div class="wheel-pointer"></div>
             <div class="canvas-wrapper">
-              <canvas id="wheelCanvas" width="480" height="480"></canvas>
+              <canvas id="wheelCanvas" width="460" height="460"></canvas>
             </div>
             <button id="spinBtn" class="spin-btn" onclick="spinWheel()">
-              🎲 SPIN PROBLEM WHEEL
+              SPIN PROBLEM WHEEL
             </button>
           </div>
 
           <!-- Locked Assigned Ticket (Hidden by default) -->
           <div id="ticketContainer" style="width: 100%; display: none;">
             <div class="ticket-card">
-              <div class="ticket-stamp">LOCKED & ASSIGNED</div>
-              <div class="ticket-header">OFFICIAL HACKATHON PROBLEM ASSIGNMENT</div>
-              <h3 id="ticketTitle" class="ticket-title">Problem Title Here</h3>
-              <div id="ticketDesc" class="ticket-desc">Detailed description...</div>
+              <div class="ticket-stamp">ASSIGNED & LOCKED</div>
+              <div class="ticket-header">OFFICIAL HACKATHON PROBLEM STATEMENT</div>
+              <h3 id="ticketTitle" class="ticket-title">Problem Title</h3>
+              <div id="ticketDesc" class="ticket-desc">Description...</div>
               
               <div class="ticket-meta">
                 <div>Team: <span id="ticketTeam" class="meta-team">Team Name</span></div>
                 <div>Category: <span id="ticketCategory" style="color: var(--text-main); font-weight: 600;">Agri + CS</span></div>
-                <div>Assigned: <span id="ticketTime" style="color: var(--text-muted);">Timestamp</span></div>
+                <div>Timestamp: <span id="ticketTime" style="color: var(--text-muted);">Timestamp</span></div>
               </div>
             </div>
 
             <div style="text-align: center; margin-top: 1.25rem;">
-              <button class="btn" onclick="window.print()">🖨️ Print / Save Ticket</button>
+              <button class="btn" onclick="window.print()">Print Ticket</button>
             </div>
           </div>
 
@@ -809,39 +708,27 @@
     </div>
 
     <!-- ==========================================================================
-         TAB 2: ORGANIZER / ADMIN DESK
+         TAB 2: ORGANIZER PANEL
          ========================================================================== -->
     <div id="tab-admin" class="tab-content">
       
       <!-- Admin Stats Overview -->
       <div class="admin-stats">
         <div class="admin-stat-card">
-          <div class="stat-icon">📦</div>
-          <div>
-            <div id="adminStatTotal" class="stat-value">24</div>
-            <div class="stat-label">Total Problems</div>
-          </div>
+          <div id="adminStatTotal" class="stat-value">0</div>
+          <div class="stat-label">Total Problems</div>
         </div>
         <div class="admin-stat-card">
-          <div class="stat-icon" style="color: var(--accent-emerald); background: rgba(16,185,129,0.1);">✅</div>
-          <div>
-            <div id="adminStatOpen" class="stat-value">24</div>
-            <div class="stat-label">Open / Available</div>
-          </div>
+          <div id="adminStatOpen" class="stat-value" style="color: var(--accent-green);">0</div>
+          <div class="stat-label">Open / Available</div>
         </div>
         <div class="admin-stat-card">
-          <div class="stat-icon" style="color: var(--accent-amber); background: rgba(245,158,11,0.1);">🔒</div>
-          <div>
-            <div id="adminStatAssigned" class="stat-value">0</div>
-            <div class="stat-label">Assigned Teams</div>
-          </div>
+          <div id="adminStatAssigned" class="stat-value" style="color: var(--accent-amber);">0</div>
+          <div class="stat-label">Assigned Teams</div>
         </div>
         <div class="admin-stat-card">
-          <div class="stat-icon" style="color: var(--accent-cyan); background: rgba(6,182,212,0.1);">🏷️</div>
-          <div>
-            <div class="stat-value">6</div>
-            <div class="stat-label">Categories</div>
-          </div>
+          <div class="stat-value" style="color: var(--accent-blue);">21</div>
+          <div class="stat-label">Total Categories</div>
         </div>
       </div>
 
@@ -849,63 +736,53 @@
 
         <!-- Left Add Form -->
         <div class="panel">
-          <h2 class="panel-title">➕ Add New Problem</h2>
+          <h2 class="panel-title">Add New Problem</h2>
           <form id="addProblemForm" onsubmit="handleAddProblem(event)">
             <div class="form-group">
               <label class="form-label" for="newTitle">Problem Title</label>
-              <input type="text" id="newTitle" class="form-input" placeholder="e.g. Smart Drone Canopy Analyzer" required>
+              <input type="text" id="newTitle" class="form-input" placeholder="e.g. Drone Thermal Sensor Subsystem" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="newCategory">Category</label>
               <select id="newCategory" class="form-select" required>
-                <option value="Agri + Agri">🌾🌾 Agri + Agri</option>
-                <option value="Agri + CS">🌾💻 Agri + CS</option>
-                <option value="Agri + DS">🌾📊 Agri + DS</option>
-                <option value="CS + CS">💻💻 CS + CS</option>
-                <option value="CS + DS">💻📊 CS + DS</option>
-                <option value="DS + DS">📊📊 DS + DS</option>
+                <!-- Populated dynamically via JS -->
               </select>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="newDesc">Detailed Description</label>
-              <textarea id="newDesc" class="form-input" rows="4" placeholder="Comprehensive technical scope, objectives, and constraints..." required style="resize: vertical;"></textarea>
+              <textarea id="newDesc" class="form-input" rows="4" placeholder="Detailed technical scope and objectives..." required style="resize: vertical;"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
-              ✨ Add Problem to Bank
+              Add Problem to Bank
             </button>
           </form>
 
-          <hr style="border-color: var(--border-color); margin: 1.75rem 0;">
+          <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
 
-          <h2 class="panel-title">⚙️ Data & Reset Control</h2>
-          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-            <button class="btn" onclick="exportAssignmentsCSV()">📥 Export Assignments (CSV)</button>
-            <button class="btn btn-danger" onclick="resetToInitialDefaults()">🔄 Reset Bank & Seed 24 Defaults</button>
-            <button class="btn btn-danger" onclick="clearAllAssignmentsOnly()">🔓 Clear All Team Assignments Only</button>
+          <h2 class="panel-title">Data Operations</h2>
+          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+            <button class="btn" onclick="exportAssignmentsCSV()">Export Assignments (CSV)</button>
+            <button class="btn btn-danger" onclick="clearAllAssignmentsOnly()">Clear All Team Assignments</button>
+            <button class="btn btn-danger" onclick="resetToInitialDefaults()">Reset All Problems to Defaults</button>
           </div>
         </div>
 
         <!-- Right Table View -->
         <div class="panel">
-          <h2 class="panel-title">📋 Problem Bank & Live Assignment Matrix</h2>
+          <h2 class="panel-title">Problem Statement Matrix</h2>
 
           <div class="table-controls">
-            <input type="text" id="tableSearch" class="form-input" placeholder="Search problems or teams..." style="flex: 1; min-width: 200px;" oninput="renderAdminTable()">
+            <input type="text" id="tableSearch" class="form-input" placeholder="Search problems or teams..." style="flex: 1; min-width: 180px;" oninput="renderAdminTable()">
             
             <select id="tableCatFilter" class="form-select" style="width: 180px;" onchange="renderAdminTable()">
               <option value="ALL">All Categories</option>
-              <option value="Agri + Agri">Agri + Agri</option>
-              <option value="Agri + CS">Agri + CS</option>
-              <option value="Agri + DS">Agri + DS</option>
-              <option value="CS + CS">CS + CS</option>
-              <option value="CS + DS">CS + DS</option>
-              <option value="DS + DS">DS + DS</option>
+              <!-- Populated dynamically via JS -->
             </select>
 
-            <select id="tableStatusFilter" class="form-select" style="width: 140px;" onchange="renderAdminTable()">
+            <select id="tableStatusFilter" class="form-select" style="width: 130px;" onchange="renderAdminTable()">
               <option value="ALL">All Status</option>
               <option value="OPEN">Open</option>
               <option value="ASSIGNED">Assigned</option>
@@ -921,7 +798,7 @@
                   <th>Problem Title</th>
                   <th>Status</th>
                   <th>Assigned Team</th>
-                  <th>Action</th>
+                  <th>Actions</th>
                 </tr>
               </thead>
               <tbody id="adminTableBody">
@@ -942,243 +819,115 @@
        ========================================================================== -->
   <script>
     /* ==========================================================================
-       INITIAL PRE-LOADED 24 REALISTIC PROBLEM STATEMENTS
+       6 DISCIPLINES & ALL 21 CANONICAL CATEGORIES
        ========================================================================== */
-    const DEFAULT_PROBLEMS = [
-      // --- AGRI + AGRI ---
-      {
-        id: "PRB-AGRI-01",
-        category: "Agri + Agri",
-        title: "Smart Sub-Surface Drip & Bio-Sensor Fertigation Optimizer",
-        description: "Design an off-grid automated micro-dosing fertigation system combining soil NPK electro-sensors with moisture gradient mapping for zero-runoff water delivery across irregular land topographies.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGRI-02",
-        category: "Agri + Agri",
-        title: "Regenerative Micro-Climate Canopy Frost Defense Protocol",
-        description: "Create an active biological and thermal early-warning frost protection system utilizing localized canopy thermo-sensors and solar misting micro-actuators to safeguard orchards.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGRI-03",
-        category: "Agri + Agri",
-        title: "Post-Harvest Ethylene Bio-Scavenging Atmosphere Monitor",
-        description: "Construct an automated storage facility atmosphere regulation unit that detects ethylene gas spikes and deploys catalytic bio-filters to prevent post-harvest crop rot during transit.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGRI-04",
-        category: "Agri + Agri",
-        title: "Autonomous Bio-Pesticide Targeted Micro-Droplet Applicator",
-        description: "Develop a low-pressure ultra-low-volume bio-pesticide dispersal protocol targeting pest hotspot pockets while preserving beneficial pollinator micro-habitats in organic farmlands.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
+    const DISCIPLINES = ["Aero", "Agri", "Civil", "CS", "DS", "Mech"];
 
-      // --- AGRI + CS ---
-      {
-        id: "PRB-AGCS-01",
-        category: "Agri + CS",
-        title: "IoT Edge Thermal Imaging Protocol for Crop Pathology Mapping",
-        description: "Build an embedded micro-controller drone firmware and low-power gateway protocol to capture thermal canopy anomalies and stream ultra-low-bandwidth spatial alerts over LoRaWAN.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGCS-02",
-        category: "Agri + CS",
-        title: "Autonomous Swarm Equipment Peer Mesh & Telemetry Pipeline",
-        description: "Construct a low-latency offline P2P mesh networking engine allowing automated micro-tractors to coordinate tillage paths and avoid collision in remote zero-cellular fields.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGCS-03",
-        category: "Agri + CS",
-        title: "Smart Solar Greenhouse Real-Time Microcontroller OS",
-        description: "Program an open-source real-time RTOS firmware layer for solar hydroponic greenhouses managing automated thermal shading, VPD ventilation, and closed-loop nutrient dosing.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGCS-04",
-        category: "Agri + CS",
-        title: "Decentralized Agricultural Produce Origin Ledger & QR Protocol",
-        description: "Develop an offline-first cryptographically signed mobile app enabling smallholder farming cooperatives to issue tamper-proof origin certificates and cold-chain compliance metrics.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-
-      // --- AGRI + DS ---
-      {
-        id: "PRB-AGDS-01",
-        category: "Agri + DS",
-        title: "Satellite Multimodal Yield Forecasting & Anomaly Radar",
-        description: "Train a spatial-temporal ML model integrating Sentinel-2 multispectral imagery feeds and soil moisture telemetry to predict crop yield per hectare 30 days prior to harvest.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGDS-02",
-        category: "Agri + DS",
-        title: "Computer Vision Insect Pest Classification & Outbreak Predictor",
-        description: "Build an optimized mobile edge vision model to classify destructive insect species from leaf photos and forecast infestation propagation based on humidity trends.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGDS-03",
-        category: "Agri + DS",
-        title: "Spectroscopic Soil NPK Deficiency Analyzer via Mobile Optics",
-        description: "Develop a deep learning algorithm trained on optical reflectance spectrum samples from mobile camera attachments to quantify nitrogen, phosphorus, and potassium deficiencies.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-AGDS-04",
-        category: "Agri + DS",
-        title: "Parametric Micro-Climate Risk Model for Crop Insurance",
-        description: "Architect a predictive risk engine calculating automated micro-insurance payout triggers for smallholder farmers based on localized extreme weather anomaly detection.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-
-      // --- CS + CS ---
-      {
-        id: "PRB-CSCS-01",
-        category: "CS + CS",
-        title: "High-Throughput Ultra-Low Latency Farm Edge Gateway API",
-        description: "Build a high-performance C++/Rust edge API engine capable of processing 50,000 sensor telemetry messages per second under high thermal throttling and power constraints.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSCS-02",
-        category: "CS + CS",
-        title: "Distributed P2P Farm Compute Grid for Field Workloads",
-        description: "Architect a decentralized task-scheduler enabling idle compute hardware on modern combine harvesters to execute distributed field processing workloads locally.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSCS-03",
-        category: "CS + CS",
-        title: "Offline-First Agri CRDT Sync Engine with Conflict Resolution",
-        description: "Construct a multi-master replication engine using Conflict-Free Replicated Data Types (CRDTs) allowing farm operators to edit field logs offline without database divergence.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSCS-04",
-        category: "CS + CS",
-        title: "Air-Gapped Binary Protocol for Intermittent Radio Transmissions",
-        description: "Design an ultra-lightweight binary transport format and buffer queue optimized for packet loss over long-range Sub-1GHz farm radio networks.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-
-      // --- CS + DS ---
-      {
-        id: "PRB-CSDS-01",
-        category: "CS + DS",
-        title: "Edge MLOps Pipeline for Real-time Drone Vision Inference",
-        description: "Build an end-to-end streaming MLOps framework to compress, quantize, and deploy lightweight computer vision models to agricultural drones mid-flight.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSDS-02",
-        category: "CS + DS",
-        title: "Geospatial Uber H3 Hexagonal Indexing Engine for Farmlands",
-        description: "Architect a spatial data engine utilizing Uber H3 spatial indexes to query billions of environmental sensor data points in sub-50ms window queries.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSDS-03",
-        category: "CS + DS",
-        title: "Real-Time Streaming Anomaly Engine for Industrial Aquaponics",
-        description: "Combine Apache Flink stream processing architecture with dynamic online anomaly detection to flag water chemical imbalance within 500 milliseconds.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-CSDS-04",
-        category: "CS + DS",
-        title: "Federated Learning Engine for Multi-Farm Data Privacy",
-        description: "Construct a privacy-preserving federated ML platform enabling competing agricultural enterprises to train shared disease detection models without disclosing raw farm yield data.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-
-      // --- DS + DS ---
-      {
-        id: "PRB-DSDS-01",
-        category: "DS + DS",
-        title: "Multimodal Vision & LLM Ensemble for Rare Crop Pathology",
-        description: "Fine-tune a multimodal ensemble model integrating vision transformers and agronomy domain LLMs to generate step-by-step treatment blueprints from leaf photo inputs.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-DSDS-02",
-        category: "DS + DS",
-        title: "Time-Series Multivariate Anomaly Detection in Dairy Facilities",
-        description: "Train a multivariate Transformer model on continuous bio-metric collar sensors to detect early onset respiratory illness in livestock days before visible symptoms appear.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-DSDS-03",
-        category: "DS + DS",
-        title: "Agri-Commodity Spot Price Volatility & Arbitrage Predictor",
-        description: "Construct a predictive econometric model forecasting crop spot prices using satellite vegetation indices, climate forecasts, and trade log datasets.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
-      },
-      {
-        id: "PRB-DSDS-04",
-        category: "DS + DS",
-        title: "Generative Synthetic Multispectral Augmentation for Rare Diseases",
-        description: "Develop a Generative Adversarial Diffusion pipeline to synthesize high-fidelity multispectral synthetic leaf images for training deep learning models on rare crop pathologies.",
-        assigned: false,
-        assignedTeam: null,
-        assignedAt: null
+    // Generate canonical category list (21 unique combinations)
+    function getAllCategories() {
+      const cats = [];
+      for (let i = 0; i < DISCIPLINES.length; i++) {
+        for (let j = i; j < DISCIPLINES.length; j++) {
+          cats.push(`${DISCIPLINES[i]} + ${DISCIPLINES[j]}`);
+        }
       }
+      return cats;
+    }
+
+    const ALL_CATEGORIES = getAllCategories();
+
+    /* Pre-loaded sample problems for all 21 categories */
+    const DEFAULT_PROBLEMS = [
+      // Aero + Aero
+      { id: "PRB-AEAE-01", category: "Aero + Aero", title: "Autonomous Hypersonic Glider Actuator Calibration", description: "Design an onboard fast-actuating trajectory correction algorithm for hypersonic atmospheric reentry vehicles.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AEAE-02", category: "Aero + Aero", title: "Lightweight Composite Micro-Satellite Solar Array Deployment", description: "Develop a passive shape-memory alloy deployment hinge mechanism for nano-satellite solar arrays.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Aero + Agri
+      { id: "PRB-AEAG-01", category: "Aero + Agri", title: "Multi-Rotor Survey Drone Canopy Thermal Mapper", description: "Construct an aerial drone sensor suite and low-power telemetry protocol to detect micro-climate crop canopy thermal stress.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AEAG-02", category: "Aero + Agri", title: "High-Altitude Atmospheric Mist Dispersal Frost Prevention", description: "Build an aerial dispersal mechanism and flight path optimizer for active orchard frost mitigation.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Aero + Civil
+      { id: "PRB-AECV-01", category: "Aero + Civil", title: "Aerial LiDAR Bridge Structural Health Monitoring", description: "Implement an automated drone flight path and point-cloud feature extraction pipeline for suspension bridge structural inspection.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AECV-02", category: "Aero + Civil", title: "Airborne Thermal Mapping for Urban Heat Island Analysis", description: "Develop high-resolution aerial thermography analytics to map urban heat retention across asphalt and building facades.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Aero + CS
+      { id: "PRB-AECS-01", category: "Aero + CS", title: "Real-Time Flight Controller Firmware for Autonomous Swarms", description: "Program a deterministic real-time RTOS firmware layer for autonomous micro-uav swarm obstacle avoidance.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AECS-02", category: "Aero + CS", title: "Ultra-Low Latency Air-to-Ground Binary Telemetry Protocol", description: "Architect a resilient binary transport protocol optimized for high-speed aircraft radio link packet loss.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Aero + DS
+      { id: "PRB-AEDS-01", category: "Aero + DS", title: "Satellite Orbital Trajectory Anomaly Radar", description: "Train a machine learning trajectory prediction model to identify orbital debris collision risks in real time.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AEDS-02", category: "Aero + DS", title: "Predictive Atmospheric Turbulence Analytics Engine", description: "Build a predictive statistical model analyzing aircraft sensor feeds to forecast localized clear-air turbulence.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Aero + Mech
+      { id: "PRB-AEMC-01", category: "Aero + Mech", title: "Variable Geometry Turbine Cooling Channel Optimizer", description: "Design an additive-manufactured internal cooling flow path for high-temperature gas turbine blades.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AEMC-02", category: "Aero + Mech", title: "High-Strength Aircraft Landing Gear Joint Mechanism", description: "Optimize the mechanical kinematics and stress load distribution of a titanium aircraft main gear assembly.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Agri + Agri
+      { id: "PRB-AGAG-01", category: "Agri + Agri", title: "Smart Sub-Surface Drip Fertigation Soil Monitor", description: "Develop a zero-runoff fertigation micro-dosing system using soil NPK sensors and moisture gradient maps.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AGAG-02", category: "Agri + Agri", title: "Post-Harvest Ethylene Bio-Scavenging Storage Unit", description: "Construct an automated storage facility atmosphere regulator that deploys catalytic filters upon ethylene spikes.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Agri + Civil
+      { id: "PRB-AGCV-01", category: "Agri + Civil", title: "Sustainable Farmland Runoff Retention Basin Network", description: "Design an eco-friendly civil drainage network preventing soil erosion and nutrient leeching into local watersheds.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AGCV-02", category: "Agri + Civil", title: "Modular Timber Grain Silo Structural Load Optimization", description: "Engineer a sustainable timber composite silo capable of withstanding lateral grain pressure dynamic shifts.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Agri + CS
+      { id: "PRB-AGCS-01", category: "Agri + CS", title: "IoT Edge Gateway for Remote Crop Canopy Sensors", description: "Construct a low-power LoRaWAN edge gateway API to stream micro-climate telemetry from off-grid sensors.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AGCS-02", category: "Agri + CS", title: "Offline-First Produce Supply Chain QR Origin App", description: "Build a cryptographically signed mobile log application allowing farmers to issue tamper-proof origin tags.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Agri + DS
+      { id: "PRB-AGDS-01", category: "Agri + DS", title: "Satellite Multispectral Yield Prediction Radar", description: "Train a spatial ML pipeline using Sentinel satellite imagery to forecast acre harvest yield 30 days ahead.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AGDS-02", category: "Agri + DS", title: "Computer Vision Insect Pest Classification Engine", description: "Develop an edge vision model to classify agricultural pest species and predict infestation vectors.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Agri + Mech
+      { id: "PRB-AGMC-01", category: "Agri + Mech", title: "Low-Power Solar Micro-Tractor Mechanical Drivetrain", description: "Design a high-torque planetary gearbox for autonomous solar-powered weeding tractors.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-AGMC-02", category: "Agri + Mech", title: "Precision Pneumatic Seed Metering Dispenser", description: "Construct a mechanical seed singulation dispenser that eliminates double-seeding at variable tractor speeds.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Civil + Civil
+      { id: "PRB-CVCV-01", category: "Civil + Civil", title: "Low-Carbon Geopolymer Concrete Aggregate Mixture", description: "Formulate a structural geopolymer concrete utilizing industrial slag to achieve zero-cement binder strength.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CVCV-02", category: "Civil + Civil", title: "Seismic Isolation Base Foundation for Critical Facilities", description: "Design a elastomeric elastomeric bearing foundation system to absorb lateral seismic shear waves.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Civil + CS
+      { id: "PRB-CVCS-01", category: "Civil + CS", title: "Smart City Adaptive Traffic Control Sensor API", description: "Architect a real-time IoT gateway to adjust intersection signal timing based on optical vehicle queues.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CVCS-02", category: "Civil + CS", title: "Digital Twin Bridge Strain Sensor Telemetry Platform", description: "Build a streaming data pipeline ingesting piezoresistive strain gauge sensors on highway overpasses.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Civil + DS
+      { id: "PRB-CVDS-01", category: "Civil + DS", title: "Machine Learning Aquifer Subsidence Risk Model", description: "Develop a predictive spatial model analyzing groundwater extraction metrics to forecast urban ground settling.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CVDS-02", category: "Civil + DS", title: "Computer Vision Concrete Surface Crack Width Measurement", description: "Train a computer vision segmentation model to measure sub-millimeter crack propagation in bridge pillars.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Civil + Mech
+      { id: "PRB-CVMC-01", category: "Civil + Mech", title: "Hydraulic Spillway Gate Actuation Kinematics", description: "Design high-pressure hydraulic ram actuators and cavitation-resistant gate geometries for flood dams.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CVMC-02", category: "Civil + Mech", title: "HVAC Geothermal Heat Exchange Loop Integration", description: "Optimize building thermal load transport through ground-source closed-loop heat exchangers.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // CS + CS
+      { id: "PRB-CSCS-01", category: "CS + CS", title: "High-Throughput Low-Latency Sensor Gateway API", description: "Build a high-performance C++/Rust gateway engine processing 50,000 messages/sec under thermal throttling.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CSCS-02", category: "CS + CS", title: "Offline-First Distributed CRDT Sync Engine", description: "Construct a multi-master replication engine using CRDTs to synchronize field edits without database locks.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // CS + DS
+      { id: "PRB-CSDS-01", category: "CS + DS", title: "Edge MLOps Pipeline for Real-time Drone Vision Inference", description: "Build a streaming framework to compress, quantize, and deploy lightweight vision models to edge devices.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CSDS-02", category: "CS + DS", title: "Scalable Geospatial H3 Indexing Engine", description: "Architect a spatial database utilizing Uber H3 hexagonal indexes to query environmental points in sub-50ms.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // CS + Mech
+      { id: "PRB-CSMC-01", category: "CS + Mech", title: "Embedded Real-Time Firmware for 6-DOF Robotic Arms", description: "Program an inverse kinematics motor controller layer executing trajectory planning at 1kHz update rates.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CSMC-02", category: "CS + Mech", title: "CAN-Bus Telemetry Interface for Industrial Equipment", description: "Develop an isolated micro-controller bridge reading J1939 CAN-bus telemetry from heavy equipment.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // DS + DS
+      { id: "PRB-DSDS-01", category: "DS + DS", title: "Multimodal Vision & Transformer Diagnostic Ensemble", description: "Fine-tune an ensemble model combining vision transformers and domain LLMs to generate failure diagnosis blueprints.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-DSDS-02", category: "DS + DS", title: "Multivariate Time-Series Anomaly Detector for Machinery", description: "Train a Transformer model on vibration and temperature sensors to predict mechanical component failure.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // DS + Mech
+      { id: "PRB-DSMC-01", category: "DS + Mech", title: "Machine Learning Spectral Vibration Gearbox Diagnostic", description: "Analyze FFT spectral accelerometer readings using machine learning to detect gear tooth spalling.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-DSMC-02", category: "DS + Mech", title: "Physics-Informed Neural Network for Fluid Heat Flow", description: "Implement a PINN surrogate model accelerating thermal hydraulic CFD simulation runtime by 100x.", assigned: false, assignedTeam: null, assignedAt: null },
+
+      // Mech + Mech
+      { id: "PRB-MCMC-01", category: "Mech + Mech", title: "High-Efficiency Regenerative Planetary Gearbox", description: "Design a dynamic kinetic energy recovery system planetary drivetrain for industrial electric vehicles.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-MCMC-02", category: "Mech + Mech", title: "Micro-Scale Stirling Engine Exhaust Waste Heat Harvester", description: "Engineer a high-delta-T Stirling cycle piston assembly converting engine exhaust heat directly to shaft power.", assigned: false, assignedTeam: null, assignedAt: null }
     ];
 
     /* ==========================================================================
        STORAGE & STATE MANAGEMENT
        ========================================================================== */
-    const STORAGE_KEY_PROBLEMS = "AGRI_HACKATHON_PROBLEMS_V2";
-    const STORAGE_KEY_TEAMS = "AGRI_HACKATHON_TEAMS_V2";
+    const STORAGE_KEY_PROBLEMS = "HACKATHON_PROBLEMS_V3";
+    const STORAGE_KEY_TEAMS = "HACKATHON_TEAMS_V3";
 
     let problems = [];
     let teams = [];
@@ -1186,8 +935,7 @@
     let isSpinning = false;
     let wheelRotation = 0;
 
-    // Cross-tab communication channel
-    const syncChannel = ("BroadcastChannel" in window) ? new BroadcastChannel("agri_hackathon_sync") : null;
+    const syncChannel = ("BroadcastChannel" in window) ? new BroadcastChannel("hackathon_spinner_sync") : null;
 
     if (syncChannel) {
       syncChannel.onmessage = (event) => {
@@ -1206,6 +954,29 @@
     });
 
     function initState() {
+      populateCategoryDropdowns();
+      loadStateFromStorage();
+      updateTeamCategory();
+      updateUI();
+    }
+
+    function populateCategoryDropdowns() {
+      const newCatSelect = document.getElementById("newCategory");
+      const filterCatSelect = document.getElementById("tableCatFilter");
+
+      newCatSelect.innerHTML = ALL_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
+      filterCatSelect.innerHTML = `<option value="ALL">All Categories</option>` + ALL_CATEGORIES.map(c => `<option value="${c}">${c}</option>`).join("");
+    }
+
+    function saveStateToStorage() {
+      localStorage.setItem(STORAGE_KEY_PROBLEMS, JSON.stringify(problems));
+      localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(teams));
+      if (syncChannel) {
+        syncChannel.postMessage("STATE_UPDATED");
+      }
+    }
+
+    function loadStateFromStorage() {
       const storedProblems = localStorage.getItem(STORAGE_KEY_PROBLEMS);
       const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
 
@@ -1222,56 +993,14 @@
       } else {
         teams = JSON.parse(storedTeams);
       }
-
-      updateTeamCategory();
-      updateUI();
-    }
-
-    function saveStateToStorage() {
-      localStorage.setItem(STORAGE_KEY_PROBLEMS, JSON.stringify(problems));
-      localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(teams));
-      if (syncChannel) {
-        syncChannel.postMessage("STATE_UPDATED");
-      }
-    }
-
-    function loadStateFromStorage() {
-      const storedProblems = localStorage.getItem(STORAGE_KEY_PROBLEMS);
-      const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
-
-      if (storedProblems) problems = JSON.parse(storedProblems);
-      if (storedTeams) teams = JSON.parse(storedTeams);
     }
 
     /* ==========================================================================
-       CATEGORY COMPUTATION ENGINE
+       CATEGORY RESOLUTION ENGINE
        ========================================================================== */
     function computeCategory(b1, b2) {
-      const pair = [b1, b2].sort(); // Standardize sorting (Agri, CS, DS)
-      
-      const map = {
-        "Agri,Agri": "Agri + Agri",
-        "Agri,CS": "Agri + CS",
-        "Agri,DS": "Agri + DS",
-        "CS,CS": "CS + CS",
-        "CS,DS": "CS + DS",
-        "DS,DS": "DS + DS"
-      };
-
-      const key = pair.join(",");
-      return map[key] || "Agri + CS";
-    }
-
-    function getCategoryIcon(cat) {
-      const icons = {
-        "Agri + Agri": "🌾🌾",
-        "Agri + CS": "🌾💻",
-        "Agri + DS": "🌾📊",
-        "CS + CS": "💻💻",
-        "CS + DS": "💻📊",
-        "DS + DS": "📊📊"
-      };
-      return icons[cat] || "🌱";
+      const pair = [b1, b2].sort();
+      return `${pair[0]} + ${pair[1]}`;
     }
 
     function updateTeamCategory() {
@@ -1285,15 +1014,15 @@
       const catStock = document.getElementById("categoryStock");
       const statusMsg = document.getElementById("teamStatusMsg");
 
-      catTag.innerHTML = `<span class="badge-icon">${getCategoryIcon(currentCategory)}</span> ${currentCategory}`;
+      catTag.innerText = currentCategory;
 
       // Check if team already exists and spun
       const existingTeam = teams.find(t => t.teamName.toLowerCase() === teamName.toLowerCase());
 
       if (existingTeam && existingTeam.assignedProblem) {
         statusMsg.innerHTML = `
-          <div class="alert-box">
-            🔒 Team <strong>${existingTeam.teamName}</strong> has already spun & locked problem: 
+          <div class="alert-banner alert-info">
+            Team <strong>${existingTeam.teamName}</strong> has already spun and was assigned problem: 
             <strong>${existingTeam.assignedProblem.title}</strong>
           </div>
         `;
@@ -1308,18 +1037,18 @@
 
       // Count open problems for category
       const openProbs = problems.filter(p => p.category === currentCategory && !p.assigned);
-      catStock.innerText = `${openProbs.length} Open Problems Available`;
+      catStock.innerText = `Available Problems: ${openProbs.length}`;
 
       if (openProbs.length === 0) {
-        catStock.style.color = "var(--accent-danger)";
+        catStock.style.color = "var(--accent-red)";
         document.getElementById("spinBtn").disabled = true;
         statusMsg.innerHTML = `
-          <div class="alert-box" style="border-color: var(--accent-danger); color: var(--accent-danger); background: rgba(239,68,68,0.1);">
-            ⚠️ All problems for <strong>${currentCategory}</strong> have been assigned! Contact organizers.
+          <div class="alert-banner alert-danger">
+            All problem statements for category <strong>${currentCategory}</strong> have been assigned. Please consult event organizers.
           </div>
         `;
       } else {
-        catStock.style.color = "var(--accent-emerald)";
+        catStock.style.color = "var(--accent-green)";
         document.getElementById("spinBtn").disabled = false;
       }
 
@@ -1327,15 +1056,14 @@
     }
 
     /* ==========================================================================
-       CANVAS SPINNING WHEEL ENGINE
+       CANVAS WHEEL RENDERING & PHYSICS
        ========================================================================== */
     const canvas = document.getElementById("wheelCanvas");
     const ctx = canvas.getContext("2d");
 
-    // Vibrant category color palettes
     const sliceColors = [
-      "#0d9668", "#0284c7", "#d97706", "#7c3aed", 
-      "#059669", "#0369a1", "#b45309", "#6d28d9"
+      "#1e3a8a", "#0284c7", "#059669", "#d97706", 
+      "#4f46e5", "#0891b2", "#16a34a", "#ca8a04"
     ];
 
     function drawWheel() {
@@ -1349,17 +1077,16 @@
       const radius = canvas.width / 2 - 10;
 
       if (numSlices === 0) {
-        // Draw Empty State
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-        ctx.fillStyle = "#14242a";
+        ctx.fillStyle = "#f1f5f9";
         ctx.fill();
-        ctx.strokeStyle = "#ef4444";
+        ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 4;
         ctx.stroke();
 
-        ctx.fillStyle = "#94a3b8";
-        ctx.font = "bold 16px Space Grotesk";
+        ctx.fillStyle = "#64748b";
+        ctx.font = "bold 15px Inter";
         ctx.textAlign = "center";
         ctx.fillText("NO OPEN PROBLEMS", centerX, centerY);
         return;
@@ -1371,7 +1098,6 @@
         const startAngle = wheelRotation + i * sliceAngle;
         const endAngle = startAngle + sliceAngle;
 
-        // Draw Slice
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
         ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -1380,43 +1106,42 @@
         ctx.fillStyle = sliceColors[i % sliceColors.length];
         ctx.fill();
 
-        ctx.strokeStyle = "#070d0f";
-        ctx.lineWidth = 3;
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Draw Slice Text
         ctx.save();
         ctx.translate(centerX, centerY);
         ctx.rotate(startAngle + sliceAngle / 2);
         ctx.textAlign = "right";
         ctx.fillStyle = "#ffffff";
-        ctx.font = "bold 13px Inter";
+        ctx.font = "600 13px Inter";
 
         let titleText = openProblems[i].title;
-        if (titleText.length > 25) {
-          titleText = titleText.substring(0, 23) + "..";
+        if (titleText.length > 26) {
+          titleText = titleText.substring(0, 24) + "..";
         }
 
         ctx.fillText(titleText, radius - 20, 5);
         ctx.restore();
       }
 
-      // Draw Center Hub
+      // Center Hub
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 45, 0, 2 * Math.PI);
-      ctx.fillStyle = "#070d0f";
+      ctx.arc(centerX, centerY, 42, 0, 2 * Math.PI);
+      ctx.fillStyle = "#ffffff";
       ctx.fill();
-      ctx.strokeStyle = "var(--accent-emerald)";
+      ctx.strokeStyle = "var(--primary)";
       ctx.lineWidth = 4;
       ctx.stroke();
 
-      ctx.fillStyle = "#ffffff";
+      ctx.fillStyle = "var(--primary)";
       ctx.font = "bold 14px Space Grotesk";
       ctx.textAlign = "center";
       ctx.fillText("SPIN", centerX, centerY + 5);
     }
 
-    /* Audio Synth for Wheel Ticks & Victory */
+    /* Web Audio API for Wheel Ticks */
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playTickSound() {
@@ -1424,46 +1149,45 @@
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = "sine";
-      osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.04);
-      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+      osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.03);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
       osc.connect(gain);
       gain.connect(audioCtx.destination);
       osc.start();
-      osc.stop(audioCtx.currentTime + 0.04);
+      osc.stop(audioCtx.currentTime + 0.03);
     }
 
     function playWinSound() {
       if (audioCtx.state === "suspended") audioCtx.resume();
-      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      const notes = [440, 554.37, 659.25, 880];
       notes.forEach((freq, idx) => {
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
         osc.type = "triangle";
         osc.frequency.value = freq;
-        gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.1);
-        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.1 + 0.3);
+        gain.gain.setValueAtTime(0.15, audioCtx.currentTime + idx * 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.08 + 0.25);
         osc.connect(gain);
         gain.connect(audioCtx.destination);
-        osc.start(audioCtx.currentTime + idx * 0.1);
-        osc.stop(audioCtx.currentTime + idx * 0.1 + 0.3);
+        osc.start(audioCtx.currentTime + idx * 0.08);
+        osc.stop(audioCtx.currentTime + idx * 0.08 + 0.25);
       });
     }
 
-    /* Spin Animation Execution */
     function spinWheel() {
       const teamName = document.getElementById("teamNameInput").value.trim();
 
       if (!teamName) {
-        alert("Please enter a valid Team Name before spinning!");
+        alert("Please enter a valid Team Name before spinning.");
         document.getElementById("teamNameInput").focus();
         return;
       }
 
       const openProblems = problems.filter(p => p.category === currentCategory && !p.assigned);
       if (openProblems.length === 0) {
-        alert("No open problems available for this category!");
+        alert("No open problems available for this category.");
         return;
       }
 
@@ -1471,33 +1195,29 @@
       isSpinning = true;
       document.getElementById("spinBtn").disabled = true;
 
-      // Select random winner from open problems
       const winningIndex = Math.floor(Math.random() * openProblems.length);
       const selectedProblem = openProblems[winningIndex];
 
       const numSlices = openProblems.length;
       const sliceAngle = (2 * Math.PI) / numSlices;
 
-      // Calculate target angle (Pointer is at top = -Math.PI / 2)
       const targetSliceAngle = (2 * Math.PI) - (winningIndex * sliceAngle + sliceAngle / 2);
-      const extraRounds = 5 * 2 * Math.PI; // 5 full rotations
+      const extraRounds = 5 * 2 * Math.PI;
       const totalRotationNeeded = extraRounds + targetSliceAngle - (wheelRotation % (2 * Math.PI));
 
       const startRotation = wheelRotation;
       const startTime = performance.now();
-      const spinDuration = 4500; // 4.5 seconds
+      const spinDuration = 4000;
 
       let lastSliceIndex = -1;
 
       function animate(now) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / spinDuration, 1);
-        
-        // Cubic Easing Out
         const easeOut = 1 - Math.pow(1 - progress, 3);
+        
         wheelRotation = startRotation + totalRotationNeeded * easeOut;
 
-        // Detect slice tick for audio
         const currentNormAngle = (wheelRotation % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
         const currentSliceIndex = Math.floor(currentNormAngle / sliceAngle);
         if (currentSliceIndex !== lastSliceIndex) {
@@ -1512,7 +1232,6 @@
         } else {
           isSpinning = false;
           playWinSound();
-          triggerConfetti();
           lockInAssignment(selectedProblem, teamName);
         }
       }
@@ -1521,14 +1240,12 @@
     }
 
     function lockInAssignment(problem, teamName) {
-      // Find problem in main state and lock
       const targetProb = problems.find(p => p.id === problem.id);
       if (targetProb) {
         targetProb.assigned = true;
         targetProb.assignedTeam = teamName;
         targetProb.assignedAt = new Date().toLocaleString();
 
-        // Record team record
         teams.push({
           teamName: teamName,
           category: currentCategory,
@@ -1540,6 +1257,7 @@
         updateUI();
 
         showAssignedTicket(targetProb, teamName, targetProb.assignedAt);
+        showBannerNotification(`Problem "${targetProb.title}" successfully assigned to team "${teamName}".`, "success");
       }
     }
 
@@ -1555,60 +1273,19 @@
       document.getElementById("ticketTime").innerText = timestamp || new Date().toLocaleTimeString();
     }
 
-    /* ==========================================================================
-       CONFETTI ANIMATION ENGINE
-       ========================================================================== */
-    function triggerConfetti() {
-      const cCanvas = document.getElementById("confettiCanvas");
-      const cCtx = cCanvas.getContext("2d");
-      cCanvas.width = window.innerWidth;
-      cCanvas.height = window.innerHeight;
+    function showBannerNotification(message, type = "info") {
+      const banner = document.getElementById("systemBanner");
+      banner.className = `alert-banner alert-${type}`;
+      banner.innerText = message;
+      banner.style.display = "block";
 
-      const particles = [];
-      const colors = ["#10b981", "#06b6d4", "#f59e0b", "#8b5cf6", "#ec4899"];
-
-      for (let i = 0; i < 120; i++) {
-        particles.push({
-          x: cCanvas.width / 2,
-          y: cCanvas.height / 2,
-          vx: (Math.random() - 0.5) * 14,
-          vy: (Math.random() - 0.7) * 16,
-          size: Math.random() * 8 + 4,
-          color: colors[Math.floor(Math.random() * colors.length)],
-          rotation: Math.random() * 360,
-          vRot: (Math.random() - 0.5) * 10
-        });
-      }
-
-      let frame = 0;
-      function renderConfetti() {
-        cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
-        particles.forEach(p => {
-          p.x += p.vx;
-          p.y += p.vy;
-          p.vy += 0.3; // Gravity
-          p.rotation += p.vRot;
-
-          cCtx.save();
-          cCtx.translate(p.x, p.y);
-          cCtx.rotate((p.rotation * Math.PI) / 180);
-          cCtx.fillStyle = p.color;
-          cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
-          cCtx.restore();
-        });
-
-        frame++;
-        if (frame < 140) {
-          requestAnimationFrame(renderConfetti);
-        } else {
-          cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
-        }
-      }
-      renderConfetti();
+      setTimeout(() => {
+        banner.style.display = "none";
+      }, 5000);
     }
 
     /* ==========================================================================
-       ADMIN DESK FUNCTIONS
+       ORGANIZER DATA MANAGEMENT (EXPLICIT & CLEAR DELETION)
        ========================================================================== */
     function renderAdminTable() {
       const tbody = document.getElementById("adminTableBody");
@@ -1627,30 +1304,34 @@
         return matchesSearch && matchesCat && matchesStatus;
       });
 
-      tbody.innerHTML = filtered.map(p => `
-        <tr>
-          <td><code style="color: var(--accent-cyan); font-weight:700;">${p.id}</code></td>
-          <td><span style="font-weight: 600;">${p.category}</span></td>
-          <td style="max-width: 280px;">
-            <div style="font-weight:600;">${p.title}</div>
-            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.3;" title="${p.description}">
-              ${p.description.substring(0, 80)}...
-            </div>
-          </td>
-          <td>
-            ${p.assigned 
-              ? `<span class="badge badge-assigned">🔒 Assigned</span>` 
-              : `<span class="badge badge-open">✅ Open</span>`}
-          </td>
-          <td>${p.assignedTeam ? `<strong style="color: var(--accent-emerald);">${p.assignedTeam}</strong>` : `<span style="color: var(--text-dim);">-</span>`}</td>
-          <td>
-            <div style="display: flex; gap: 0.4rem;">
-              ${p.assigned ? `<button class="btn btn-sm" onclick="unassignProblem('${p.id}')">🔓 Unassign</button>` : ''}
-              <button class="btn btn-danger btn-sm" onclick="deleteProblem('${p.id}')">🗑️ Delete</button>
-            </div>
-          </td>
-        </tr>
-      `).join("");
+      if (filtered.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-light); padding: 1.5rem;">No problems match current filters.</td></tr>`;
+      } else {
+        tbody.innerHTML = filtered.map(p => `
+          <tr>
+            <td><code>${p.id}</code></td>
+            <td><strong>${p.category}</strong></td>
+            <td>
+              <div style="font-weight:600;">${p.title}</div>
+              <div style="font-size: 0.8rem; color: var(--text-muted);" title="${p.description}">
+                ${p.description.substring(0, 75)}...
+              </div>
+            </td>
+            <td>
+              ${p.assigned 
+                ? `<span class="badge badge-assigned">Assigned</span>` 
+                : `<span class="badge badge-open">Open</span>`}
+            </td>
+            <td>${p.assignedTeam ? `<strong>${p.assignedTeam}</strong>` : `<span style="color: var(--text-light);">-</span>`}</td>
+            <td>
+              <div style="display: flex; gap: 0.4rem;">
+                ${p.assigned ? `<button class="btn btn-sm" onclick="unassignProblem('${p.id}')">Unassign</button>` : ''}
+                <button class="btn btn-danger btn-sm" onclick="deleteProblem('${p.id}')">Delete</button>
+              </div>
+            </td>
+          </tr>
+        `).join("");
+      }
 
       // Update Admin Stats
       const total = problems.length;
@@ -1675,8 +1356,8 @@
 
       if (!title || !description) return;
 
-      const newId = `PRB-CUSTOM-${Date.now().toString().slice(-4)}`;
-      problems.push({
+      const newId = `PRB-NEW-${Date.now().toString().slice(-4)}`;
+      const newProblem = {
         id: newId,
         category: category,
         title: title,
@@ -1684,65 +1365,93 @@
         assigned: false,
         assignedTeam: null,
         assignedAt: null
-      });
+      };
 
+      problems.push(newProblem);
       saveStateToStorage();
       updateUI();
 
       document.getElementById("addProblemForm").reset();
-      alert(`Problem "${title}" added successfully to ${category}!`);
+      showBannerNotification(`New problem statement "${title}" (${newId}) added successfully to category ${category}.`, "success");
+    }
+
+    /* CLEAR DELETION FUNCTIONS */
+    function deleteProblem(probId) {
+      const prob = problems.find(p => p.id === probId);
+      if (!prob) return;
+
+      if (!confirm(`Are you sure you want to permanently delete problem statement "${prob.title}" (${prob.id})?`)) {
+        return;
+      }
+
+      // Remove from problems list
+      problems = problems.filter(p => p.id !== probId);
+
+      // Remove from teams list if assigned
+      teams = teams.filter(t => !t.assignedProblem || t.assignedProblem.id !== probId);
+
+      saveStateToStorage();
+      updateUI();
+      showBannerNotification(`Problem statement ${probId} was permanently deleted.`, "danger");
     }
 
     function unassignProblem(probId) {
-      if (!confirm("Are you sure you want to unassign this problem statement?")) return;
       const prob = problems.find(p => p.id === probId);
-      if (prob) {
-        // Remove team record
-        teams = teams.filter(t => t.assignedProblem && t.assignedProblem.id !== probId);
-        prob.assigned = false;
-        prob.assignedTeam = null;
-        prob.assignedAt = null;
+      if (!prob) return;
 
-        saveStateToStorage();
-        updateUI();
+      if (!confirm(`Unassign problem "${prob.title}" from team "${prob.assignedTeam}"?`)) {
+        return;
       }
-    }
 
-    function deleteProblem(probId) {
-      if (!confirm("Delete this problem statement permanently from the bank?")) return;
-      problems = problems.filter(p => p.id !== probId);
-      teams = teams.filter(t => t.assignedProblem && t.assignedProblem.id !== probId);
+      const teamName = prob.assignedTeam;
+      prob.assigned = false;
+      prob.assignedTeam = null;
+      prob.assignedAt = null;
+
+      teams = teams.filter(t => !t.assignedProblem || t.assignedProblem.id !== probId);
 
       saveStateToStorage();
       updateUI();
+      showBannerNotification(`Assignment cleared for team "${teamName}". Problem statement is now OPEN.`, "info");
     }
 
     function resetToInitialDefaults() {
-      if (!confirm("⚠️ This will wipe all custom problems and assignments, and restore the original 24 problems. Continue?")) return;
+      if (!confirm("Warning: This will clear all custom problems and assignments, and restore default problems across all categories. Proceed?")) {
+        return;
+      }
+
+      localStorage.removeItem(STORAGE_KEY_PROBLEMS);
+      localStorage.removeItem(STORAGE_KEY_TEAMS);
+
       problems = JSON.parse(JSON.stringify(DEFAULT_PROBLEMS));
       teams = [];
+
       saveStateToStorage();
       updateUI();
-      alert("System reset to initial default 24 problems!");
+      showBannerNotification("System successfully reset to default problem bank.", "info");
     }
 
     function clearAllAssignmentsOnly() {
-      if (!confirm("Clear all team assignments and make all existing problems OPEN again?")) return;
+      if (!confirm("Clear all assigned teams and restore all problem statements to OPEN status?")) {
+        return;
+      }
+
       problems.forEach(p => {
         p.assigned = false;
         p.assignedTeam = null;
         p.assignedAt = null;
       });
+
       teams = [];
       saveStateToStorage();
       updateUI();
-      alert("All assignments cleared!");
+      showBannerNotification("All team assignments have been cleared.", "info");
     }
 
     function exportAssignmentsCSV() {
       const assignedProblems = problems.filter(p => p.assigned);
       if (assignedProblems.length === 0) {
-        alert("No assigned problems to export yet.");
+        alert("No assigned problems to export.");
         return;
       }
 
@@ -1757,12 +1466,11 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `hackathon_problem_assignments_${Date.now()}.csv`;
+      a.download = `problem_assignments_${Date.now()}.csv`;
       a.click();
       URL.revokeObjectURL(url);
     }
 
-    /* Navigation Tab Switcher */
     function switchTab(tabId) {
       document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
       document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
@@ -1783,7 +1491,6 @@
       renderAdminTable();
     }
 
-    // Initialize application state on page load
     window.onload = initState;
   </script>
 </body>
