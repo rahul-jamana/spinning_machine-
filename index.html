@@ -1,0 +1,1790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriTech 2026 | Hackathon Problem Statement Spinner</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES ("Field Meets Circuit")
+       ========================================================================== */
+    :root {
+      --bg-dark: #070d0f;
+      --bg-card: #0e191d;
+      --bg-card-hover: #14242a;
+      --bg-panel: #112026;
+      --border-color: #1e363f;
+      --border-glow: #10b98144;
+      
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      --accent-amber: #f59e0b;
+      --accent-purple: #8b5cf6;
+      --accent-danger: #ef4444;
+      
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+
+      --font-heading: 'Space Grotesk', -apple-system, sans-serif;
+      --font-body: 'Inter', -apple-system, sans-serif;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      
+      --shadow-glow: 0 0 25px rgba(16, 185, 129, 0.15);
+      --shadow-amber: 0 0 25px rgba(245, 158, 11, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(16, 185, 129, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(6, 182, 212, 0.05) 0%, transparent 40%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg-dark);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-color);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--accent-emerald);
+    }
+
+    /* Container Layout */
+    .app-header {
+      border-bottom: 1px solid var(--border-color);
+      background: rgba(14, 25, 29, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .brand-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(to right, #ffffff, #cbd5e1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--accent-emerald);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    /* Navigation Tabs */
+    .nav-tabs {
+      display: flex;
+      background: rgba(7, 13, 15, 0.6);
+      padding: 4px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .tab-btn:hover {
+      color: var(--text-main);
+    }
+
+    .tab-btn.active {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 182, 212, 0.2));
+      color: var(--accent-emerald);
+      border: 1px solid var(--border-glow);
+    }
+
+    .stat-pills {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .stat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .stat-pill span {
+      color: var(--accent-emerald);
+      font-weight: 700;
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 1300px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       SPINNER VIEW LAYOUT
+       ========================================================================== */
+    .spinner-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    @media (max-width: 1024px) {
+      .spinner-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Cards & Panels */
+    .panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-emerald), transparent);
+    }
+
+    .panel-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-select {
+      width: 100%;
+      background: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      padding: 0.75rem 1rem;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      transition: all 0.2s ease;
+    }
+
+    .form-input:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--accent-emerald);
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.15);
+    }
+
+    /* Category Badge Box */
+    .category-box {
+      background: var(--bg-dark);
+      border: 1px dashed var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      text-align: center;
+      margin-top: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .category-box.active {
+      border-style: solid;
+      border-color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.04);
+      box-shadow: var(--shadow-glow);
+    }
+
+    .category-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, var(--accent-emerald), var(--accent-cyan));
+      color: #041116;
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 1.1rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-icon {
+      font-size: 1.1rem;
+    }
+
+    /* Wheel Section */
+    .wheel-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      width: 480px;
+      height: 480px;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @media (max-width: 540px) {
+      .canvas-wrapper {
+        width: 320px;
+        height: 320px;
+      }
+    }
+
+    #wheelCanvas {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+
+    /* Pointer Arrow */
+    .wheel-pointer {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 32px solid var(--accent-amber);
+      filter: drop-shadow(0 4px 10px rgba(245, 158, 11, 0.6));
+      z-index: 10;
+    }
+
+    .spin-btn {
+      margin-top: 1.75rem;
+      background: linear-gradient(135deg, var(--accent-emerald), #059669);
+      color: #041116;
+      border: none;
+      padding: 1rem 3rem;
+      border-radius: 40px;
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      transition: all 0.25 ease;
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .spin-btn:hover:not(:disabled) {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 0 35px rgba(16, 185, 129, 0.6);
+    }
+
+    .spin-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    /* ==========================================================================
+       ASSIGNED TICKET / LOCKED CARD
+       ========================================================================== */
+    .ticket-card {
+      background: linear-gradient(145deg, #0e1c20, #13242a);
+      border: 2px solid var(--accent-emerald);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
+      margin-top: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-glow);
+      animation: popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.9); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    .ticket-stamp {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      border: 3px double var(--accent-amber);
+      color: var(--accent-amber);
+      font-family: var(--font-heading);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      transform: rotate(6deg);
+      text-transform: uppercase;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+    }
+
+    .ticket-header {
+      font-size: 0.8rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .ticket-title {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      line-height: 1.3;
+      padding-right: 120px;
+    }
+
+    .ticket-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+      background: rgba(7, 13, 15, 0.5);
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      border-left: 3px solid var(--accent-emerald);
+    }
+
+    .ticket-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .meta-team {
+      color: var(--accent-emerald);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* ==========================================================================
+       ADMIN DESK STYLES
+       ========================================================================== */
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .admin-stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-sm);
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-emerald);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+
+    .stat-value {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .admin-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Data Table */
+    .table-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-dark);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .data-table th {
+      background: var(--bg-panel);
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .data-table td {
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-main);
+      vertical-align: middle;
+    }
+
+    .data-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-open {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--accent-emerald);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-assigned {
+      background: rgba(245, 158, 11, 0.15);
+      color: var(--accent-amber);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .btn {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--text-muted);
+    }
+
+    .btn-primary {
+      background: var(--accent-emerald);
+      color: #041116;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: #0d9668;
+    }
+
+    .btn-danger {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--accent-danger);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .btn-danger:hover {
+      background: rgba(239, 68, 68, 0.25);
+    }
+
+    .btn-sm {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+    }
+
+    /* Modals & Alerts */
+    .alert-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--accent-amber);
+      color: var(--accent-amber);
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="confettiCanvas" class="confetti-canvas"></canvas>
+
+  <!-- APP HEADER -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">🌱</div>
+        <div>
+          <h1 class="brand-title">AGRI-TECH 2026</h1>
+          <div class="brand-subtitle">Cross-Discipline Problem Spinner</div>
+        </div>
+      </div>
+
+      <nav class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('spinner')">
+          🎯 Team Spinner
+        </button>
+        <button class="tab-btn" onclick="switchTab('admin')">
+          🛠️ Organizer Desk
+        </button>
+      </nav>
+
+      <div class="stat-pills">
+        <div class="stat-pill">Total: <span id="headerTotalCount">0</span></div>
+        <div class="stat-pill">Open: <span id="headerOpenCount">0</span></div>
+        <div class="stat-pill">Assigned: <span id="headerAssignedCount">0</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="main-container">
+
+    <!-- ==========================================================================
+         TAB 1: TEAM SPINNER
+         ========================================================================== -->
+    <div id="tab-spinner" class="tab-content active">
+      <div class="spinner-grid">
+
+        <!-- Left Form Panel -->
+        <div class="panel">
+          <h2 class="panel-title">👥 Team Registration</h2>
+
+          <div class="form-group">
+            <label class="form-label" for="teamNameInput">Team Name</label>
+            <input type="text" id="teamNameInput" class="form-input" placeholder="e.g. AgriCode Pioneers" oninput="updateTeamCategory()">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="member1Select">Member 1 Background</label>
+            <select id="member1Select" class="form-select" onchange="updateTeamCategory()">
+              <option value="CS">💻 Computer Science (CS)</option>
+              <option value="DS">📊 Data Science (DS)</option>
+              <option value="Agri">🌾 Agriculture (Agri)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="member2Select">Member 2 Background</label>
+            <select id="member2Select" class="form-select" onchange="updateTeamCategory()">
+              <option value="Agri" selected>🌾 Agriculture (Agri)</option>
+              <option value="CS">💻 Computer Science (CS)</option>
+              <option value="DS">📊 Data Science (DS)</option>
+            </select>
+          </div>
+
+          <div id="categoryBox" class="category-box active">
+            <div style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Automated Team Category</div>
+            <div id="categoryTag" class="category-tag">
+              <span class="badge-icon">🌾💻</span> Agri + CS
+            </div>
+            <div id="categoryStock" style="font-size: 0.8rem; color: var(--accent-emerald); margin-top: 0.5rem; font-weight: 600;">
+              4 Open Problems Available
+            </div>
+          </div>
+
+          <div id="teamStatusMsg" style="margin-top: 1rem;"></div>
+        </div>
+
+        <!-- Right Wheel & Ticket Section -->
+        <div class="panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center;">
+          
+          <div id="wheelWrapper" class="wheel-container">
+            <div class="wheel-pointer"></div>
+            <div class="canvas-wrapper">
+              <canvas id="wheelCanvas" width="480" height="480"></canvas>
+            </div>
+            <button id="spinBtn" class="spin-btn" onclick="spinWheel()">
+              🎲 SPIN PROBLEM WHEEL
+            </button>
+          </div>
+
+          <!-- Locked Assigned Ticket (Hidden by default) -->
+          <div id="ticketContainer" style="width: 100%; display: none;">
+            <div class="ticket-card">
+              <div class="ticket-stamp">LOCKED & ASSIGNED</div>
+              <div class="ticket-header">OFFICIAL HACKATHON PROBLEM ASSIGNMENT</div>
+              <h3 id="ticketTitle" class="ticket-title">Problem Title Here</h3>
+              <div id="ticketDesc" class="ticket-desc">Detailed description...</div>
+              
+              <div class="ticket-meta">
+                <div>Team: <span id="ticketTeam" class="meta-team">Team Name</span></div>
+                <div>Category: <span id="ticketCategory" style="color: var(--text-main); font-weight: 600;">Agri + CS</span></div>
+                <div>Assigned: <span id="ticketTime" style="color: var(--text-muted);">Timestamp</span></div>
+              </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 1.25rem;">
+              <button class="btn" onclick="window.print()">🖨️ Print / Save Ticket</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================================================
+         TAB 2: ORGANIZER / ADMIN DESK
+         ========================================================================== -->
+    <div id="tab-admin" class="tab-content">
+      
+      <!-- Admin Stats Overview -->
+      <div class="admin-stats">
+        <div class="admin-stat-card">
+          <div class="stat-icon">📦</div>
+          <div>
+            <div id="adminStatTotal" class="stat-value">24</div>
+            <div class="stat-label">Total Problems</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="stat-icon" style="color: var(--accent-emerald); background: rgba(16,185,129,0.1);">✅</div>
+          <div>
+            <div id="adminStatOpen" class="stat-value">24</div>
+            <div class="stat-label">Open / Available</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="stat-icon" style="color: var(--accent-amber); background: rgba(245,158,11,0.1);">🔒</div>
+          <div>
+            <div id="adminStatAssigned" class="stat-value">0</div>
+            <div class="stat-label">Assigned Teams</div>
+          </div>
+        </div>
+        <div class="admin-stat-card">
+          <div class="stat-icon" style="color: var(--accent-cyan); background: rgba(6,182,212,0.1);">🏷️</div>
+          <div>
+            <div class="stat-value">6</div>
+            <div class="stat-label">Categories</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-grid">
+
+        <!-- Left Add Form -->
+        <div class="panel">
+          <h2 class="panel-title">➕ Add New Problem</h2>
+          <form id="addProblemForm" onsubmit="handleAddProblem(event)">
+            <div class="form-group">
+              <label class="form-label" for="newTitle">Problem Title</label>
+              <input type="text" id="newTitle" class="form-input" placeholder="e.g. Smart Drone Canopy Analyzer" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="newCategory">Category</label>
+              <select id="newCategory" class="form-select" required>
+                <option value="Agri + Agri">🌾🌾 Agri + Agri</option>
+                <option value="Agri + CS">🌾💻 Agri + CS</option>
+                <option value="Agri + DS">🌾📊 Agri + DS</option>
+                <option value="CS + CS">💻💻 CS + CS</option>
+                <option value="CS + DS">💻📊 CS + DS</option>
+                <option value="DS + DS">📊📊 DS + DS</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="newDesc">Detailed Description</label>
+              <textarea id="newDesc" class="form-input" rows="4" placeholder="Comprehensive technical scope, objectives, and constraints..." required style="resize: vertical;"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+              ✨ Add Problem to Bank
+            </button>
+          </form>
+
+          <hr style="border-color: var(--border-color); margin: 1.75rem 0;">
+
+          <h2 class="panel-title">⚙️ Data & Reset Control</h2>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <button class="btn" onclick="exportAssignmentsCSV()">📥 Export Assignments (CSV)</button>
+            <button class="btn btn-danger" onclick="resetToInitialDefaults()">🔄 Reset Bank & Seed 24 Defaults</button>
+            <button class="btn btn-danger" onclick="clearAllAssignmentsOnly()">🔓 Clear All Team Assignments Only</button>
+          </div>
+        </div>
+
+        <!-- Right Table View -->
+        <div class="panel">
+          <h2 class="panel-title">📋 Problem Bank & Live Assignment Matrix</h2>
+
+          <div class="table-controls">
+            <input type="text" id="tableSearch" class="form-input" placeholder="Search problems or teams..." style="flex: 1; min-width: 200px;" oninput="renderAdminTable()">
+            
+            <select id="tableCatFilter" class="form-select" style="width: 180px;" onchange="renderAdminTable()">
+              <option value="ALL">All Categories</option>
+              <option value="Agri + Agri">Agri + Agri</option>
+              <option value="Agri + CS">Agri + CS</option>
+              <option value="Agri + DS">Agri + DS</option>
+              <option value="CS + CS">CS + CS</option>
+              <option value="CS + DS">CS + DS</option>
+              <option value="DS + DS">DS + DS</option>
+            </select>
+
+            <select id="tableStatusFilter" class="form-select" style="width: 140px;" onchange="renderAdminTable()">
+              <option value="ALL">All Status</option>
+              <option value="OPEN">Open</option>
+              <option value="ASSIGNED">Assigned</option>
+            </select>
+          </div>
+
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Category</th>
+                  <th>Problem Title</th>
+                  <th>Status</th>
+                  <th>Assigned Team</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="adminTableBody">
+                <!-- Rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC & STATE ENGINE
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       INITIAL PRE-LOADED 24 REALISTIC PROBLEM STATEMENTS
+       ========================================================================== */
+    const DEFAULT_PROBLEMS = [
+      // --- AGRI + AGRI ---
+      {
+        id: "PRB-AGRI-01",
+        category: "Agri + Agri",
+        title: "Smart Sub-Surface Drip & Bio-Sensor Fertigation Optimizer",
+        description: "Design an off-grid automated micro-dosing fertigation system combining soil NPK electro-sensors with moisture gradient mapping for zero-runoff water delivery across irregular land topographies.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGRI-02",
+        category: "Agri + Agri",
+        title: "Regenerative Micro-Climate Canopy Frost Defense Protocol",
+        description: "Create an active biological and thermal early-warning frost protection system utilizing localized canopy thermo-sensors and solar misting micro-actuators to safeguard orchards.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGRI-03",
+        category: "Agri + Agri",
+        title: "Post-Harvest Ethylene Bio-Scavenging Atmosphere Monitor",
+        description: "Construct an automated storage facility atmosphere regulation unit that detects ethylene gas spikes and deploys catalytic bio-filters to prevent post-harvest crop rot during transit.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGRI-04",
+        category: "Agri + Agri",
+        title: "Autonomous Bio-Pesticide Targeted Micro-Droplet Applicator",
+        description: "Develop a low-pressure ultra-low-volume bio-pesticide dispersal protocol targeting pest hotspot pockets while preserving beneficial pollinator micro-habitats in organic farmlands.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+
+      // --- AGRI + CS ---
+      {
+        id: "PRB-AGCS-01",
+        category: "Agri + CS",
+        title: "IoT Edge Thermal Imaging Protocol for Crop Pathology Mapping",
+        description: "Build an embedded micro-controller drone firmware and low-power gateway protocol to capture thermal canopy anomalies and stream ultra-low-bandwidth spatial alerts over LoRaWAN.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGCS-02",
+        category: "Agri + CS",
+        title: "Autonomous Swarm Equipment Peer Mesh & Telemetry Pipeline",
+        description: "Construct a low-latency offline P2P mesh networking engine allowing automated micro-tractors to coordinate tillage paths and avoid collision in remote zero-cellular fields.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGCS-03",
+        category: "Agri + CS",
+        title: "Smart Solar Greenhouse Real-Time Microcontroller OS",
+        description: "Program an open-source real-time RTOS firmware layer for solar hydroponic greenhouses managing automated thermal shading, VPD ventilation, and closed-loop nutrient dosing.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGCS-04",
+        category: "Agri + CS",
+        title: "Decentralized Agricultural Produce Origin Ledger & QR Protocol",
+        description: "Develop an offline-first cryptographically signed mobile app enabling smallholder farming cooperatives to issue tamper-proof origin certificates and cold-chain compliance metrics.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+
+      // --- AGRI + DS ---
+      {
+        id: "PRB-AGDS-01",
+        category: "Agri + DS",
+        title: "Satellite Multimodal Yield Forecasting & Anomaly Radar",
+        description: "Train a spatial-temporal ML model integrating Sentinel-2 multispectral imagery feeds and soil moisture telemetry to predict crop yield per hectare 30 days prior to harvest.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGDS-02",
+        category: "Agri + DS",
+        title: "Computer Vision Insect Pest Classification & Outbreak Predictor",
+        description: "Build an optimized mobile edge vision model to classify destructive insect species from leaf photos and forecast infestation propagation based on humidity trends.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGDS-03",
+        category: "Agri + DS",
+        title: "Spectroscopic Soil NPK Deficiency Analyzer via Mobile Optics",
+        description: "Develop a deep learning algorithm trained on optical reflectance spectrum samples from mobile camera attachments to quantify nitrogen, phosphorus, and potassium deficiencies.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-AGDS-04",
+        category: "Agri + DS",
+        title: "Parametric Micro-Climate Risk Model for Crop Insurance",
+        description: "Architect a predictive risk engine calculating automated micro-insurance payout triggers for smallholder farmers based on localized extreme weather anomaly detection.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+
+      // --- CS + CS ---
+      {
+        id: "PRB-CSCS-01",
+        category: "CS + CS",
+        title: "High-Throughput Ultra-Low Latency Farm Edge Gateway API",
+        description: "Build a high-performance C++/Rust edge API engine capable of processing 50,000 sensor telemetry messages per second under high thermal throttling and power constraints.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSCS-02",
+        category: "CS + CS",
+        title: "Distributed P2P Farm Compute Grid for Field Workloads",
+        description: "Architect a decentralized task-scheduler enabling idle compute hardware on modern combine harvesters to execute distributed field processing workloads locally.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSCS-03",
+        category: "CS + CS",
+        title: "Offline-First Agri CRDT Sync Engine with Conflict Resolution",
+        description: "Construct a multi-master replication engine using Conflict-Free Replicated Data Types (CRDTs) allowing farm operators to edit field logs offline without database divergence.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSCS-04",
+        category: "CS + CS",
+        title: "Air-Gapped Binary Protocol for Intermittent Radio Transmissions",
+        description: "Design an ultra-lightweight binary transport format and buffer queue optimized for packet loss over long-range Sub-1GHz farm radio networks.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+
+      // --- CS + DS ---
+      {
+        id: "PRB-CSDS-01",
+        category: "CS + DS",
+        title: "Edge MLOps Pipeline for Real-time Drone Vision Inference",
+        description: "Build an end-to-end streaming MLOps framework to compress, quantize, and deploy lightweight computer vision models to agricultural drones mid-flight.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSDS-02",
+        category: "CS + DS",
+        title: "Geospatial Uber H3 Hexagonal Indexing Engine for Farmlands",
+        description: "Architect a spatial data engine utilizing Uber H3 spatial indexes to query billions of environmental sensor data points in sub-50ms window queries.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSDS-03",
+        category: "CS + DS",
+        title: "Real-Time Streaming Anomaly Engine for Industrial Aquaponics",
+        description: "Combine Apache Flink stream processing architecture with dynamic online anomaly detection to flag water chemical imbalance within 500 milliseconds.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-CSDS-04",
+        category: "CS + DS",
+        title: "Federated Learning Engine for Multi-Farm Data Privacy",
+        description: "Construct a privacy-preserving federated ML platform enabling competing agricultural enterprises to train shared disease detection models without disclosing raw farm yield data.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+
+      // --- DS + DS ---
+      {
+        id: "PRB-DSDS-01",
+        category: "DS + DS",
+        title: "Multimodal Vision & LLM Ensemble for Rare Crop Pathology",
+        description: "Fine-tune a multimodal ensemble model integrating vision transformers and agronomy domain LLMs to generate step-by-step treatment blueprints from leaf photo inputs.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-DSDS-02",
+        category: "DS + DS",
+        title: "Time-Series Multivariate Anomaly Detection in Dairy Facilities",
+        description: "Train a multivariate Transformer model on continuous bio-metric collar sensors to detect early onset respiratory illness in livestock days before visible symptoms appear.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-DSDS-03",
+        category: "DS + DS",
+        title: "Agri-Commodity Spot Price Volatility & Arbitrage Predictor",
+        description: "Construct a predictive econometric model forecasting crop spot prices using satellite vegetation indices, climate forecasts, and trade log datasets.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      },
+      {
+        id: "PRB-DSDS-04",
+        category: "DS + DS",
+        title: "Generative Synthetic Multispectral Augmentation for Rare Diseases",
+        description: "Develop a Generative Adversarial Diffusion pipeline to synthesize high-fidelity multispectral synthetic leaf images for training deep learning models on rare crop pathologies.",
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      }
+    ];
+
+    /* ==========================================================================
+       STORAGE & STATE MANAGEMENT
+       ========================================================================== */
+    const STORAGE_KEY_PROBLEMS = "AGRI_HACKATHON_PROBLEMS_V2";
+    const STORAGE_KEY_TEAMS = "AGRI_HACKATHON_TEAMS_V2";
+
+    let problems = [];
+    let teams = [];
+    let currentCategory = "Agri + CS";
+    let isSpinning = false;
+    let wheelRotation = 0;
+
+    // Cross-tab communication channel
+    const syncChannel = ("BroadcastChannel" in window) ? new BroadcastChannel("agri_hackathon_sync") : null;
+
+    if (syncChannel) {
+      syncChannel.onmessage = (event) => {
+        if (event.data === "STATE_UPDATED") {
+          loadStateFromStorage();
+          updateUI();
+        }
+      };
+    }
+
+    window.addEventListener("storage", (e) => {
+      if (e.key === STORAGE_KEY_PROBLEMS || e.key === STORAGE_KEY_TEAMS) {
+        loadStateFromStorage();
+        updateUI();
+      }
+    });
+
+    function initState() {
+      const storedProblems = localStorage.getItem(STORAGE_KEY_PROBLEMS);
+      const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
+
+      if (!storedProblems) {
+        problems = JSON.parse(JSON.stringify(DEFAULT_PROBLEMS));
+        saveStateToStorage();
+      } else {
+        problems = JSON.parse(storedProblems);
+      }
+
+      if (!storedTeams) {
+        teams = [];
+        saveStateToStorage();
+      } else {
+        teams = JSON.parse(storedTeams);
+      }
+
+      updateTeamCategory();
+      updateUI();
+    }
+
+    function saveStateToStorage() {
+      localStorage.setItem(STORAGE_KEY_PROBLEMS, JSON.stringify(problems));
+      localStorage.setItem(STORAGE_KEY_TEAMS, JSON.stringify(teams));
+      if (syncChannel) {
+        syncChannel.postMessage("STATE_UPDATED");
+      }
+    }
+
+    function loadStateFromStorage() {
+      const storedProblems = localStorage.getItem(STORAGE_KEY_PROBLEMS);
+      const storedTeams = localStorage.getItem(STORAGE_KEY_TEAMS);
+
+      if (storedProblems) problems = JSON.parse(storedProblems);
+      if (storedTeams) teams = JSON.parse(storedTeams);
+    }
+
+    /* ==========================================================================
+       CATEGORY COMPUTATION ENGINE
+       ========================================================================== */
+    function computeCategory(b1, b2) {
+      const pair = [b1, b2].sort(); // Standardize sorting (Agri, CS, DS)
+      
+      const map = {
+        "Agri,Agri": "Agri + Agri",
+        "Agri,CS": "Agri + CS",
+        "Agri,DS": "Agri + DS",
+        "CS,CS": "CS + CS",
+        "CS,DS": "CS + DS",
+        "DS,DS": "DS + DS"
+      };
+
+      const key = pair.join(",");
+      return map[key] || "Agri + CS";
+    }
+
+    function getCategoryIcon(cat) {
+      const icons = {
+        "Agri + Agri": "🌾🌾",
+        "Agri + CS": "🌾💻",
+        "Agri + DS": "🌾📊",
+        "CS + CS": "💻💻",
+        "CS + DS": "💻📊",
+        "DS + DS": "📊📊"
+      };
+      return icons[cat] || "🌱";
+    }
+
+    function updateTeamCategory() {
+      const teamName = document.getElementById("teamNameInput").value.trim();
+      const b1 = document.getElementById("member1Select").value;
+      const b2 = document.getElementById("member2Select").value;
+
+      currentCategory = computeCategory(b1, b2);
+
+      const catTag = document.getElementById("categoryTag");
+      const catStock = document.getElementById("categoryStock");
+      const statusMsg = document.getElementById("teamStatusMsg");
+
+      catTag.innerHTML = `<span class="badge-icon">${getCategoryIcon(currentCategory)}</span> ${currentCategory}`;
+
+      // Check if team already exists and spun
+      const existingTeam = teams.find(t => t.teamName.toLowerCase() === teamName.toLowerCase());
+
+      if (existingTeam && existingTeam.assignedProblem) {
+        statusMsg.innerHTML = `
+          <div class="alert-box">
+            🔒 Team <strong>${existingTeam.teamName}</strong> has already spun & locked problem: 
+            <strong>${existingTeam.assignedProblem.title}</strong>
+          </div>
+        `;
+        showAssignedTicket(existingTeam.assignedProblem, existingTeam.teamName, existingTeam.assignedAt);
+        document.getElementById("wheelWrapper").style.display = "none";
+        return;
+      } else {
+        document.getElementById("wheelWrapper").style.display = "flex";
+        document.getElementById("ticketContainer").style.display = "none";
+        statusMsg.innerHTML = "";
+      }
+
+      // Count open problems for category
+      const openProbs = problems.filter(p => p.category === currentCategory && !p.assigned);
+      catStock.innerText = `${openProbs.length} Open Problems Available`;
+
+      if (openProbs.length === 0) {
+        catStock.style.color = "var(--accent-danger)";
+        document.getElementById("spinBtn").disabled = true;
+        statusMsg.innerHTML = `
+          <div class="alert-box" style="border-color: var(--accent-danger); color: var(--accent-danger); background: rgba(239,68,68,0.1);">
+            ⚠️ All problems for <strong>${currentCategory}</strong> have been assigned! Contact organizers.
+          </div>
+        `;
+      } else {
+        catStock.style.color = "var(--accent-emerald)";
+        document.getElementById("spinBtn").disabled = false;
+      }
+
+      drawWheel();
+    }
+
+    /* ==========================================================================
+       CANVAS SPINNING WHEEL ENGINE
+       ========================================================================== */
+    const canvas = document.getElementById("wheelCanvas");
+    const ctx = canvas.getContext("2d");
+
+    // Vibrant category color palettes
+    const sliceColors = [
+      "#0d9668", "#0284c7", "#d97706", "#7c3aed", 
+      "#059669", "#0369a1", "#b45309", "#6d28d9"
+    ];
+
+    function drawWheel() {
+      const openProblems = problems.filter(p => p.category === currentCategory && !p.assigned);
+      const numSlices = openProblems.length;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
+      const radius = canvas.width / 2 - 10;
+
+      if (numSlices === 0) {
+        // Draw Empty State
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+        ctx.fillStyle = "#14242a";
+        ctx.fill();
+        ctx.strokeStyle = "#ef4444";
+        ctx.lineWidth = 4;
+        ctx.stroke();
+
+        ctx.fillStyle = "#94a3b8";
+        ctx.font = "bold 16px Space Grotesk";
+        ctx.textAlign = "center";
+        ctx.fillText("NO OPEN PROBLEMS", centerX, centerY);
+        return;
+      }
+
+      const sliceAngle = (2 * Math.PI) / numSlices;
+
+      for (let i = 0; i < numSlices; i++) {
+        const startAngle = wheelRotation + i * sliceAngle;
+        const endAngle = startAngle + sliceAngle;
+
+        // Draw Slice
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+        ctx.closePath();
+
+        ctx.fillStyle = sliceColors[i % sliceColors.length];
+        ctx.fill();
+
+        ctx.strokeStyle = "#070d0f";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Draw Slice Text
+        ctx.save();
+        ctx.translate(centerX, centerY);
+        ctx.rotate(startAngle + sliceAngle / 2);
+        ctx.textAlign = "right";
+        ctx.fillStyle = "#ffffff";
+        ctx.font = "bold 13px Inter";
+
+        let titleText = openProblems[i].title;
+        if (titleText.length > 25) {
+          titleText = titleText.substring(0, 23) + "..";
+        }
+
+        ctx.fillText(titleText, radius - 20, 5);
+        ctx.restore();
+      }
+
+      // Draw Center Hub
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 45, 0, 2 * Math.PI);
+      ctx.fillStyle = "#070d0f";
+      ctx.fill();
+      ctx.strokeStyle = "var(--accent-emerald)";
+      ctx.lineWidth = 4;
+      ctx.stroke();
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 14px Space Grotesk";
+      ctx.textAlign = "center";
+      ctx.fillText("SPIN", centerX, centerY + 5);
+    }
+
+    /* Audio Synth for Wheel Ticks & Victory */
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playTickSound() {
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(600, audioCtx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(150, audioCtx.currentTime + 0.04);
+      gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.04);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.04);
+    }
+
+    function playWinSound() {
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      notes.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.2, audioCtx.currentTime + idx * 0.1);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.1 + 0.3);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(audioCtx.currentTime + idx * 0.1);
+        osc.stop(audioCtx.currentTime + idx * 0.1 + 0.3);
+      });
+    }
+
+    /* Spin Animation Execution */
+    function spinWheel() {
+      const teamName = document.getElementById("teamNameInput").value.trim();
+
+      if (!teamName) {
+        alert("Please enter a valid Team Name before spinning!");
+        document.getElementById("teamNameInput").focus();
+        return;
+      }
+
+      const openProblems = problems.filter(p => p.category === currentCategory && !p.assigned);
+      if (openProblems.length === 0) {
+        alert("No open problems available for this category!");
+        return;
+      }
+
+      if (isSpinning) return;
+      isSpinning = true;
+      document.getElementById("spinBtn").disabled = true;
+
+      // Select random winner from open problems
+      const winningIndex = Math.floor(Math.random() * openProblems.length);
+      const selectedProblem = openProblems[winningIndex];
+
+      const numSlices = openProblems.length;
+      const sliceAngle = (2 * Math.PI) / numSlices;
+
+      // Calculate target angle (Pointer is at top = -Math.PI / 2)
+      const targetSliceAngle = (2 * Math.PI) - (winningIndex * sliceAngle + sliceAngle / 2);
+      const extraRounds = 5 * 2 * Math.PI; // 5 full rotations
+      const totalRotationNeeded = extraRounds + targetSliceAngle - (wheelRotation % (2 * Math.PI));
+
+      const startRotation = wheelRotation;
+      const startTime = performance.now();
+      const spinDuration = 4500; // 4.5 seconds
+
+      let lastSliceIndex = -1;
+
+      function animate(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / spinDuration, 1);
+        
+        // Cubic Easing Out
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        wheelRotation = startRotation + totalRotationNeeded * easeOut;
+
+        // Detect slice tick for audio
+        const currentNormAngle = (wheelRotation % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+        const currentSliceIndex = Math.floor(currentNormAngle / sliceAngle);
+        if (currentSliceIndex !== lastSliceIndex) {
+          playTickSound();
+          lastSliceIndex = currentSliceIndex;
+        }
+
+        drawWheel();
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          isSpinning = false;
+          playWinSound();
+          triggerConfetti();
+          lockInAssignment(selectedProblem, teamName);
+        }
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    function lockInAssignment(problem, teamName) {
+      // Find problem in main state and lock
+      const targetProb = problems.find(p => p.id === problem.id);
+      if (targetProb) {
+        targetProb.assigned = true;
+        targetProb.assignedTeam = teamName;
+        targetProb.assignedAt = new Date().toLocaleString();
+
+        // Record team record
+        teams.push({
+          teamName: teamName,
+          category: currentCategory,
+          assignedProblem: targetProb,
+          assignedAt: targetProb.assignedAt
+        });
+
+        saveStateToStorage();
+        updateUI();
+
+        showAssignedTicket(targetProb, teamName, targetProb.assignedAt);
+      }
+    }
+
+    function showAssignedTicket(problem, teamName, timestamp) {
+      document.getElementById("wheelWrapper").style.display = "none";
+      const ticket = document.getElementById("ticketContainer");
+      ticket.style.display = "block";
+
+      document.getElementById("ticketTitle").innerText = problem.title;
+      document.getElementById("ticketDesc").innerText = problem.description;
+      document.getElementById("ticketTeam").innerText = teamName;
+      document.getElementById("ticketCategory").innerText = problem.category;
+      document.getElementById("ticketTime").innerText = timestamp || new Date().toLocaleTimeString();
+    }
+
+    /* ==========================================================================
+       CONFETTI ANIMATION ENGINE
+       ========================================================================== */
+    function triggerConfetti() {
+      const cCanvas = document.getElementById("confettiCanvas");
+      const cCtx = cCanvas.getContext("2d");
+      cCanvas.width = window.innerWidth;
+      cCanvas.height = window.innerHeight;
+
+      const particles = [];
+      const colors = ["#10b981", "#06b6d4", "#f59e0b", "#8b5cf6", "#ec4899"];
+
+      for (let i = 0; i < 120; i++) {
+        particles.push({
+          x: cCanvas.width / 2,
+          y: cCanvas.height / 2,
+          vx: (Math.random() - 0.5) * 14,
+          vy: (Math.random() - 0.7) * 16,
+          size: Math.random() * 8 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          rotation: Math.random() * 360,
+          vRot: (Math.random() - 0.5) * 10
+        });
+      }
+
+      let frame = 0;
+      function renderConfetti() {
+        cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
+        particles.forEach(p => {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.3; // Gravity
+          p.rotation += p.vRot;
+
+          cCtx.save();
+          cCtx.translate(p.x, p.y);
+          cCtx.rotate((p.rotation * Math.PI) / 180);
+          cCtx.fillStyle = p.color;
+          cCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+          cCtx.restore();
+        });
+
+        frame++;
+        if (frame < 140) {
+          requestAnimationFrame(renderConfetti);
+        } else {
+          cCtx.clearRect(0, 0, cCanvas.width, cCanvas.height);
+        }
+      }
+      renderConfetti();
+    }
+
+    /* ==========================================================================
+       ADMIN DESK FUNCTIONS
+       ========================================================================== */
+    function renderAdminTable() {
+      const tbody = document.getElementById("adminTableBody");
+      const search = document.getElementById("tableSearch").value.toLowerCase();
+      const catFilter = document.getElementById("tableCatFilter").value;
+      const statusFilter = document.getElementById("tableStatusFilter").value;
+
+      const filtered = problems.filter(p => {
+        const matchesSearch = p.title.toLowerCase().includes(search) || 
+                              p.id.toLowerCase().includes(search) ||
+                              (p.assignedTeam && p.assignedTeam.toLowerCase().includes(search));
+        const matchesCat = (catFilter === "ALL") || (p.category === catFilter);
+        const matchesStatus = (statusFilter === "ALL") || 
+                              (statusFilter === "OPEN" && !p.assigned) ||
+                              (statusFilter === "ASSIGNED" && p.assigned);
+        return matchesSearch && matchesCat && matchesStatus;
+      });
+
+      tbody.innerHTML = filtered.map(p => `
+        <tr>
+          <td><code style="color: var(--accent-cyan); font-weight:700;">${p.id}</code></td>
+          <td><span style="font-weight: 600;">${p.category}</span></td>
+          <td style="max-width: 280px;">
+            <div style="font-weight:600;">${p.title}</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.3;" title="${p.description}">
+              ${p.description.substring(0, 80)}...
+            </div>
+          </td>
+          <td>
+            ${p.assigned 
+              ? `<span class="badge badge-assigned">🔒 Assigned</span>` 
+              : `<span class="badge badge-open">✅ Open</span>`}
+          </td>
+          <td>${p.assignedTeam ? `<strong style="color: var(--accent-emerald);">${p.assignedTeam}</strong>` : `<span style="color: var(--text-dim);">-</span>`}</td>
+          <td>
+            <div style="display: flex; gap: 0.4rem;">
+              ${p.assigned ? `<button class="btn btn-sm" onclick="unassignProblem('${p.id}')">🔓 Unassign</button>` : ''}
+              <button class="btn btn-danger btn-sm" onclick="deleteProblem('${p.id}')">🗑️ Delete</button>
+            </div>
+          </td>
+        </tr>
+      `).join("");
+
+      // Update Admin Stats
+      const total = problems.length;
+      const assigned = problems.filter(p => p.assigned).length;
+      const open = total - assigned;
+
+      document.getElementById("adminStatTotal").innerText = total;
+      document.getElementById("adminStatOpen").innerText = open;
+      document.getElementById("adminStatAssigned").innerText = assigned;
+
+      // Header pills
+      document.getElementById("headerTotalCount").innerText = total;
+      document.getElementById("headerOpenCount").innerText = open;
+      document.getElementById("headerAssignedCount").innerText = assigned;
+    }
+
+    function handleAddProblem(e) {
+      e.preventDefault();
+      const title = document.getElementById("newTitle").value.trim();
+      const category = document.getElementById("newCategory").value;
+      const description = document.getElementById("newDesc").value.trim();
+
+      if (!title || !description) return;
+
+      const newId = `PRB-CUSTOM-${Date.now().toString().slice(-4)}`;
+      problems.push({
+        id: newId,
+        category: category,
+        title: title,
+        description: description,
+        assigned: false,
+        assignedTeam: null,
+        assignedAt: null
+      });
+
+      saveStateToStorage();
+      updateUI();
+
+      document.getElementById("addProblemForm").reset();
+      alert(`Problem "${title}" added successfully to ${category}!`);
+    }
+
+    function unassignProblem(probId) {
+      if (!confirm("Are you sure you want to unassign this problem statement?")) return;
+      const prob = problems.find(p => p.id === probId);
+      if (prob) {
+        // Remove team record
+        teams = teams.filter(t => t.assignedProblem && t.assignedProblem.id !== probId);
+        prob.assigned = false;
+        prob.assignedTeam = null;
+        prob.assignedAt = null;
+
+        saveStateToStorage();
+        updateUI();
+      }
+    }
+
+    function deleteProblem(probId) {
+      if (!confirm("Delete this problem statement permanently from the bank?")) return;
+      problems = problems.filter(p => p.id !== probId);
+      teams = teams.filter(t => t.assignedProblem && t.assignedProblem.id !== probId);
+
+      saveStateToStorage();
+      updateUI();
+    }
+
+    function resetToInitialDefaults() {
+      if (!confirm("⚠️ This will wipe all custom problems and assignments, and restore the original 24 problems. Continue?")) return;
+      problems = JSON.parse(JSON.stringify(DEFAULT_PROBLEMS));
+      teams = [];
+      saveStateToStorage();
+      updateUI();
+      alert("System reset to initial default 24 problems!");
+    }
+
+    function clearAllAssignmentsOnly() {
+      if (!confirm("Clear all team assignments and make all existing problems OPEN again?")) return;
+      problems.forEach(p => {
+        p.assigned = false;
+        p.assignedTeam = null;
+        p.assignedAt = null;
+      });
+      teams = [];
+      saveStateToStorage();
+      updateUI();
+      alert("All assignments cleared!");
+    }
+
+    function exportAssignmentsCSV() {
+      const assignedProblems = problems.filter(p => p.assigned);
+      if (assignedProblems.length === 0) {
+        alert("No assigned problems to export yet.");
+        return;
+      }
+
+      let csv = "Problem ID,Category,Title,Assigned Team,Assigned Date\n";
+      assignedProblems.forEach(p => {
+        const safeTitle = `"${p.title.replace(/"/g, '""')}"`;
+        const safeTeam = `"${(p.assignedTeam || "").replace(/"/g, '""')}"`;
+        csv += `${p.id},${p.category},${safeTitle},${safeTeam},${p.assignedAt}\n`;
+      });
+
+      const blob = new Blob([csv], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `hackathon_problem_assignments_${Date.now()}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    /* Navigation Tab Switcher */
+    function switchTab(tabId) {
+      document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+
+      if (tabId === "spinner") {
+        document.querySelectorAll(".tab-btn")[0].classList.add("active");
+        document.getElementById("tab-spinner").classList.add("active");
+        updateTeamCategory();
+      } else {
+        document.querySelectorAll(".tab-btn")[1].classList.add("active");
+        document.getElementById("tab-admin").classList.add("active");
+        renderAdminTable();
+      }
+    }
+
+    function updateUI() {
+      updateTeamCategory();
+      renderAdminTable();
+    }
+
+    // Initialize application state on page load
+    window.onload = initState;
+  </script>
+</body>
+</html>
