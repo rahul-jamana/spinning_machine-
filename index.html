@@ -3,44 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interdisciplinary Hackathon Problem Statement Spinner</title>
+  <title>Ayush Technologies | Hackathon Problem Statement Assignment Portal</title>
   <!-- Google Fonts: Inter & Space Grotesk -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
   
   <style>
     /* ==========================================================================
-       CLASSIC CORPORATE & ACADEMIC DESIGN SYSTEM
+       AYUSH TECHNOLOGIES BRANDED DESIGN SYSTEM
        ========================================================================== */
     :root {
-      --bg-body: #f8fafc;
+      --bg-body: #f4f7fb;
       --bg-surface: #ffffff;
-      --bg-alt: #f1f5f9;
+      --bg-alt: #edf2f7;
       --border-color: #cbd5e1;
       --border-dark: #94a3b8;
       
-      --primary: #1e3a8a;
-      --primary-hover: #1e40af;
-      --accent-blue: #2563eb;
-      --accent-green: #15803d;
-      --accent-amber: #b45309;
-      --accent-red: #dc2626;
+      --brand-navy: #0b1f3a;
+      --brand-blue: #0f4c81;
+      --brand-accent: #0066cc;
+      --brand-sky: #e8f2fc;
       
       --text-main: #0f172a;
       --text-muted: #475569;
       --text-light: #64748b;
 
-      --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --accent-green: #15803d;
+      --accent-amber: #b45309;
+      --accent-red: #dc2626;
+
+      --font-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       
-      --radius-sm: 4px;
-      --radius-md: 8px;
-      --radius-lg: 12px;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
       
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-      --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+      --shadow-sm: 0 2px 4px rgba(11, 31, 58, 0.06);
+      --shadow-md: 0 4px 14px rgba(11, 31, 58, 0.1);
+      --shadow-lg: 0 10px 30px rgba(11, 31, 58, 0.15);
     }
 
     * {
@@ -70,23 +72,63 @@
       border-radius: 4px;
     }
 
-    /* Header */
-    .app-header {
-      background: var(--primary);
+    /* Top Organizers Banner */
+    .organizer-strip {
+      background: var(--brand-navy);
       color: #ffffff;
-      border-bottom: 3px solid var(--accent-blue);
-      box-shadow: var(--shadow-sm);
+      padding: 0.4rem 1.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .organizer-strip span {
+      color: #60a5fa;
+      font-weight: 700;
+    }
+
+    /* Main Header */
+    .app-header {
+      background: linear-gradient(135deg, #0b1f3a 0%, #0f4c81 100%);
+      color: #ffffff;
+      border-bottom: 4px solid var(--brand-accent);
+      box-shadow: var(--shadow-md);
     }
 
     .header-inner {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 1.25rem 1.5rem;
+      padding: 1rem 1.5rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.25rem;
+    }
+
+    .brand-container {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .logo-badge {
+      background: #ffffff;
+      padding: 0.4rem 0.8rem;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-img {
+      height: 52px;
+      width: auto;
+      object-fit: contain;
     }
 
     .brand-title {
@@ -98,10 +140,10 @@
     }
 
     .brand-subtitle {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: #93c5fd;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       font-weight: 600;
       margin-top: 2px;
     }
@@ -109,16 +151,17 @@
     /* Navigation Tabs */
     .nav-tabs {
       display: flex;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(0, 0, 0, 0.25);
       padding: 4px;
       border-radius: var(--radius-md);
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
     .tab-btn {
       background: transparent;
       border: none;
       color: #cbd5e1;
-      padding: 0.5rem 1.25rem;
+      padding: 0.6rem 1.3rem;
       border-radius: var(--radius-sm);
       font-family: var(--font-body);
       font-weight: 600;
@@ -133,8 +176,9 @@
 
     .tab-btn.active {
       background: #ffffff;
-      color: var(--primary);
+      color: var(--brand-navy);
       box-shadow: var(--shadow-sm);
+      font-weight: 700;
     }
 
     .stat-pills {
@@ -143,22 +187,22 @@
     }
 
     .stat-pill {
-      background: rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.12);
       border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+      padding: 0.35rem 0.85rem;
+      border-radius: 6px;
       font-size: 0.8rem;
       color: #ffffff;
     }
 
     .stat-pill span {
       font-weight: 700;
-      color: #93c5fd;
+      color: #60a5fa;
     }
 
-    /* Main Container */
+    /* Main Layout */
     .main-container {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 2rem auto;
       padding: 0 1.5rem;
     }
@@ -169,12 +213,17 @@
 
     .tab-content.active {
       display: block;
+      animation: fadeIn 0.25s ease;
     }
 
-    /* Layout Grid */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .grid-spinner {
       display: grid;
-      grid-template-columns: 360px 1fr;
+      grid-template-columns: 380px 1fr;
       gap: 2rem;
       align-items: start;
     }
@@ -189,19 +238,19 @@
     .panel {
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
-      border-radius: var(--radius-md);
+      border-radius: var(--radius-lg);
       padding: 1.75rem;
       box-shadow: var(--shadow-sm);
     }
 
     .panel-title {
       font-family: var(--font-heading);
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--brand-navy);
       margin-bottom: 1.25rem;
-      padding-bottom: 0.5rem;
-      border-bottom: 2px solid var(--bg-alt);
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--brand-sky);
     }
 
     .form-group {
@@ -210,12 +259,12 @@
 
     .form-label {
       display: block;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.82rem;
+      font-weight: 700;
       color: var(--text-muted);
       margin-bottom: 0.4rem;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     .form-input, .form-select {
@@ -223,24 +272,24 @@
       background: var(--bg-surface);
       border: 1px solid var(--border-color);
       border-radius: var(--radius-sm);
-      padding: 0.65rem 0.85rem;
+      padding: 0.7rem 0.9rem;
       color: var(--text-main);
       font-family: var(--font-body);
       font-size: 0.95rem;
-      transition: border-color 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     .form-input:focus, .form-select:focus {
       outline: none;
-      border-color: var(--accent-blue);
-      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+      border-color: var(--brand-accent);
+      box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.12);
     }
 
     /* Category Box */
     .category-box {
-      background: var(--bg-alt);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
+      background: var(--brand-sky);
+      border: 1px solid #bfdbfe;
+      border-radius: var(--radius-md);
       padding: 1.25rem;
       text-align: center;
       margin-top: 1rem;
@@ -248,13 +297,13 @@
 
     .category-tag {
       display: inline-block;
-      background: var(--primary);
+      background: var(--brand-navy);
       color: #ffffff;
       font-family: var(--font-heading);
       font-weight: 700;
-      font-size: 1.05rem;
-      padding: 0.4rem 1.2rem;
-      border-radius: 4px;
+      font-size: 1.1rem;
+      padding: 0.45rem 1.4rem;
+      border-radius: 6px;
       margin-top: 0.5rem;
     }
 
@@ -286,7 +335,7 @@
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      border: 6px solid var(--primary);
+      border: 6px solid var(--brand-navy);
       box-shadow: var(--shadow-md);
     }
 
@@ -305,51 +354,65 @@
 
     .spin-btn {
       margin-top: 1.75rem;
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--brand-navy), var(--brand-blue));
       color: #ffffff;
       border: none;
-      padding: 0.85rem 2.5rem;
+      padding: 0.9rem 2.75rem;
       border-radius: var(--radius-sm);
       font-family: var(--font-heading);
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: all 0.2s ease;
       box-shadow: var(--shadow-sm);
     }
 
     .spin-btn:hover:not(:disabled) {
-      background: var(--primary-hover);
+      background: var(--brand-accent);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
     .spin-btn:disabled {
       opacity: 0.5;
       cursor: not-allowed;
+      transform: none;
     }
 
-    /* Assigned Ticket */
+    /* Ticket Card */
     .ticket-card {
       background: #ffffff;
-      border: 2px solid var(--accent-green);
-      border-radius: var(--radius-md);
-      padding: 2rem;
+      border: 2px solid var(--brand-accent);
+      border-radius: var(--radius-lg);
+      padding: 2.25rem;
       margin-top: 1.5rem;
       position: relative;
-      box-shadow: var(--shadow-md);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .ticket-organizer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 1rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 2px solid var(--bg-alt);
+    }
+
+    .ticket-logo {
+      height: 44px;
+      width: auto;
     }
 
     .ticket-stamp {
-      position: absolute;
-      top: 18px;
-      right: 18px;
       border: 2px solid var(--accent-green);
       color: var(--accent-green);
       font-family: var(--font-heading);
       font-weight: 700;
       font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      padding: 0.3rem 0.75rem;
+      letter-spacing: 0.08em;
+      padding: 0.35rem 0.8rem;
       border-radius: 4px;
       text-transform: uppercase;
       background: #f0fdf4;
@@ -366,22 +429,21 @@
 
     .ticket-title {
       font-family: var(--font-heading);
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--brand-navy);
       margin-bottom: 1rem;
-      padding-right: 140px;
     }
 
     .ticket-desc {
       color: var(--text-muted);
       font-size: 0.95rem;
-      line-height: 1.6;
+      line-height: 1.65;
       margin-bottom: 1.5rem;
-      background: var(--bg-alt);
-      padding: 1rem 1.25rem;
+      background: var(--brand-sky);
+      padding: 1.25rem;
       border-radius: var(--radius-sm);
-      border-left: 4px solid var(--primary);
+      border-left: 4px solid var(--brand-accent);
     }
 
     .ticket-meta {
@@ -397,8 +459,9 @@
     }
 
     .meta-team {
-      color: var(--primary);
+      color: var(--brand-accent);
       font-weight: 700;
+      font-size: 1rem;
     }
 
     /* Buttons */
@@ -406,11 +469,11 @@
       background: var(--bg-surface);
       color: var(--text-main);
       border: 1px solid var(--border-color);
-      padding: 0.55rem 1.1rem;
+      padding: 0.6rem 1.2rem;
       border-radius: var(--radius-sm);
       font-family: var(--font-body);
       font-weight: 600;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       cursor: pointer;
       transition: all 0.2s ease;
       display: inline-flex;
@@ -424,13 +487,13 @@
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: var(--brand-navy);
       color: #ffffff;
       border: none;
     }
 
     .btn-primary:hover {
-      background: var(--primary-hover);
+      background: var(--brand-accent);
     }
 
     .btn-danger {
@@ -444,8 +507,8 @@
     }
 
     .btn-sm {
-      padding: 0.3rem 0.6rem;
-      font-size: 0.78rem;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.8rem;
     }
 
     /* Admin Table & Controls */
@@ -462,20 +525,21 @@
       padding: 1.25rem;
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--brand-navy);
     }
 
     .stat-value {
       font-family: var(--font-heading);
       font-size: 1.6rem;
       font-weight: 700;
-      color: var(--primary);
+      color: var(--brand-navy);
     }
 
     .stat-label {
       font-size: 0.78rem;
       color: var(--text-muted);
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .admin-grid {
@@ -513,10 +577,10 @@
 
     .data-table th {
       background: var(--bg-alt);
-      color: var(--text-main);
+      color: var(--brand-navy);
       font-family: var(--font-body);
-      font-weight: 600;
-      padding: 0.75rem 0.9rem;
+      font-weight: 700;
+      padding: 0.8rem 0.9rem;
       border-bottom: 2px solid var(--border-color);
       text-transform: uppercase;
       font-size: 0.75rem;
@@ -524,14 +588,14 @@
     }
 
     .data-table td {
-      padding: 0.75rem 0.9rem;
+      padding: 0.8rem 0.9rem;
       border-bottom: 1px solid var(--border-color);
       color: var(--text-main);
       vertical-align: middle;
     }
 
     .data-table tr:nth-child(even) td {
-      background: #fafafa;
+      background: #f8fafc;
     }
 
     .badge {
@@ -557,10 +621,10 @@
 
     /* Alerts */
     .alert-banner {
-      padding: 0.85rem 1.1rem;
+      padding: 0.85rem 1.25rem;
       border-radius: var(--radius-sm);
-      margin-bottom: 1rem;
-      font-size: 0.88rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
       font-weight: 500;
       border: 1px solid transparent;
     }
@@ -586,12 +650,22 @@
 </head>
 <body>
 
-  <!-- APP HEADER -->
+  <!-- TOP ORGANIZER BANNER STRIP -->
+  <div class="organizer-strip">
+    Organized & Conducted by <span>AYUSH TECHNOLOGIES</span> — INNOVATE. INTEGRATE. ELEVATE.
+  </div>
+
+  <!-- MAIN APP HEADER -->
   <header class="app-header">
     <div class="header-inner">
-      <div>
-        <h1 class="brand-title">Interdisciplinary Hackathon</h1>
-        <div class="brand-subtitle">Problem Statement Assignment Portal</div>
+      <div class="brand-container">
+        <div class="logo-badge">
+          <img src="ayush_technologies_logo.png" alt="Ayush Technologies Logo" class="logo-img">
+        </div>
+        <div>
+          <h1 class="brand-title">Interdisciplinary Hackathon</h1>
+          <div class="brand-subtitle">Problem Statement Assignment Portal</div>
+        </div>
       </div>
 
       <nav class="nav-tabs">
@@ -604,8 +678,8 @@
       </nav>
 
       <div class="stat-pills">
-        <div class="stat-pill">Total Problems: <span id="headerTotalCount">0</span></div>
-        <div class="stat-pill">Available: <span id="headerOpenCount">0</span></div>
+        <div class="stat-pill">Total: <span id="headerTotalCount">0</span></div>
+        <div class="stat-pill">Open: <span id="headerOpenCount">0</span></div>
         <div class="stat-pill">Assigned: <span id="headerAssignedCount">0</span></div>
       </div>
     </div>
@@ -614,7 +688,7 @@
   <!-- MAIN CONTAINER -->
   <main class="main-container">
 
-    <!-- System Notification Banner -->
+    <!-- System Banner Notification -->
     <div id="systemBanner" style="display: none;"></div>
 
     <!-- ==========================================================================
@@ -623,13 +697,13 @@
     <div id="tab-spinner" class="tab-content active">
       <div class="grid-spinner">
 
-        <!-- Left Form Panel -->
+        <!-- Left Registration Panel -->
         <div class="panel">
           <h2 class="panel-title">Team Registration</h2>
 
           <div class="form-group">
             <label class="form-label" for="teamNameInput">Team Name</label>
-            <input type="text" id="teamNameInput" class="form-input" placeholder="e.g. Apex Engineering Team" oninput="updateTeamCategory()">
+            <input type="text" id="teamNameInput" class="form-input" placeholder="e.g. Ayush Innovators" oninput="updateTeamCategory()">
           </div>
 
           <div class="form-group">
@@ -657,11 +731,11 @@
           </div>
 
           <div id="categoryBox" class="category-box">
-            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Calculated Team Category</div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Calculated Team Category</div>
             <div id="categoryTag" class="category-tag">
               Agri + CS
             </div>
-            <div id="categoryStock" style="font-size: 0.82rem; color: var(--accent-green); margin-top: 0.5rem; font-weight: 600;">
+            <div id="categoryStock" style="font-size: 0.82rem; color: var(--accent-green); margin-top: 0.5rem; font-weight: 700;">
               Available Problems: 0
             </div>
           </div>
@@ -685,7 +759,11 @@
           <!-- Locked Assigned Ticket (Hidden by default) -->
           <div id="ticketContainer" style="width: 100%; display: none;">
             <div class="ticket-card">
-              <div class="ticket-stamp">ASSIGNED & LOCKED</div>
+              <div class="ticket-organizer-header">
+                <img src="ayush_technologies_logo.png" alt="Ayush Technologies" class="ticket-logo">
+                <div class="ticket-stamp">ASSIGNED & LOCKED</div>
+              </div>
+              
               <div class="ticket-header">OFFICIAL HACKATHON PROBLEM STATEMENT</div>
               <h3 id="ticketTitle" class="ticket-title">Problem Title</h3>
               <div id="ticketDesc" class="ticket-desc">Description...</div>
@@ -698,7 +776,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 1.25rem;">
-              <button class="btn" onclick="window.print()">Print Ticket</button>
+              <button class="btn btn-primary" onclick="window.print()">Print Official Ticket</button>
             </div>
           </div>
 
@@ -708,39 +786,39 @@
     </div>
 
     <!-- ==========================================================================
-         TAB 2: ORGANIZER PANEL
+         TAB 2: ORGANIZER PANEL (FULLY FUNCTIONAL & VERIFIED)
          ========================================================================== -->
     <div id="tab-admin" class="tab-content">
       
       <!-- Admin Stats Overview -->
       <div class="admin-stats">
-        <div class="admin-stat-card">
+        <div class="admin-stat-card" style="border-left-color: var(--brand-navy);">
           <div id="adminStatTotal" class="stat-value">0</div>
           <div class="stat-label">Total Problems</div>
         </div>
-        <div class="admin-stat-card">
+        <div class="admin-stat-card" style="border-left-color: var(--accent-green);">
           <div id="adminStatOpen" class="stat-value" style="color: var(--accent-green);">0</div>
           <div class="stat-label">Open / Available</div>
         </div>
-        <div class="admin-stat-card">
+        <div class="admin-stat-card" style="border-left-color: var(--accent-amber);">
           <div id="adminStatAssigned" class="stat-value" style="color: var(--accent-amber);">0</div>
           <div class="stat-label">Assigned Teams</div>
         </div>
-        <div class="admin-stat-card">
-          <div class="stat-value" style="color: var(--accent-blue);">21</div>
-          <div class="stat-label">Total Categories</div>
+        <div class="admin-stat-card" style="border-left-color: var(--brand-accent);">
+          <div class="stat-value" style="color: var(--brand-accent);">21</div>
+          <div class="stat-label">Disciplines Categories</div>
         </div>
       </div>
 
       <div class="admin-grid">
 
-        <!-- Left Add Form -->
+        <!-- Left Add Problem Form -->
         <div class="panel">
-          <h2 class="panel-title">Add New Problem</h2>
+          <h2 class="panel-title">Add New Problem Statement</h2>
           <form id="addProblemForm" onsubmit="handleAddProblem(event)">
             <div class="form-group">
               <label class="form-label" for="newTitle">Problem Title</label>
-              <input type="text" id="newTitle" class="form-input" placeholder="e.g. Drone Thermal Sensor Subsystem" required>
+              <input type="text" id="newTitle" class="form-input" placeholder="e.g. Smart Sensor Payload Subsystem" required>
             </div>
 
             <div class="form-group">
@@ -752,7 +830,7 @@
 
             <div class="form-group">
               <label class="form-label" for="newDesc">Detailed Description</label>
-              <textarea id="newDesc" class="form-input" rows="4" placeholder="Detailed technical scope and objectives..." required style="resize: vertical;"></textarea>
+              <textarea id="newDesc" class="form-input" rows="4" placeholder="Comprehensive technical scope and objectives..." required style="resize: vertical;"></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
@@ -763,7 +841,7 @@
           <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
 
           <h2 class="panel-title">Data Operations</h2>
-          <div style="display: flex; flex-direction: column; gap: 0.6rem;">
+          <div style="display: flex; flex-direction: column; gap: 0.65rem;">
             <button class="btn" onclick="exportAssignmentsCSV()">Export Assignments (CSV)</button>
             <button class="btn btn-danger" onclick="clearAllAssignmentsOnly()">Clear All Team Assignments</button>
             <button class="btn btn-danger" onclick="resetToInitialDefaults()">Reset All Problems to Defaults</button>
@@ -772,10 +850,10 @@
 
         <!-- Right Table View -->
         <div class="panel">
-          <h2 class="panel-title">Problem Statement Matrix</h2>
+          <h2 class="panel-title">Problem Statement Bank & Live Assignments</h2>
 
           <div class="table-controls">
-            <input type="text" id="tableSearch" class="form-input" placeholder="Search problems or teams..." style="flex: 1; min-width: 180px;" oninput="renderAdminTable()">
+            <input type="text" id="tableSearch" class="form-input" placeholder="Search title, ID, or team..." style="flex: 1; min-width: 180px;" oninput="renderAdminTable()">
             
             <select id="tableCatFilter" class="form-select" style="width: 180px;" onchange="renderAdminTable()">
               <option value="ALL">All Categories</option>
@@ -818,12 +896,9 @@
        JAVASCRIPT LOGIC & STATE ENGINE
        ========================================================================== -->
   <script>
-    /* ==========================================================================
-       6 DISCIPLINES & ALL 21 CANONICAL CATEGORIES
-       ========================================================================== */
+    /* 6 DISCIPLINES & 21 CANONICAL CATEGORIES */
     const DISCIPLINES = ["Aero", "Agri", "Civil", "CS", "DS", "Mech"];
 
-    // Generate canonical category list (21 unique combinations)
     function getAllCategories() {
       const cats = [];
       for (let i = 0; i < DISCIPLINES.length; i++) {
@@ -836,7 +911,7 @@
 
     const ALL_CATEGORIES = getAllCategories();
 
-    /* Pre-loaded sample problems for all 21 categories */
+    /* Pre-loaded realistic engineering problem statements */
     const DEFAULT_PROBLEMS = [
       // Aero + Aero
       { id: "PRB-AEAE-01", category: "Aero + Aero", title: "Autonomous Hypersonic Glider Actuator Calibration", description: "Design an onboard fast-actuating trajectory correction algorithm for hypersonic atmospheric reentry vehicles.", assigned: false, assignedTeam: null, assignedAt: null },
@@ -884,7 +959,7 @@
 
       // Civil + Civil
       { id: "PRB-CVCV-01", category: "Civil + Civil", title: "Low-Carbon Geopolymer Concrete Aggregate Mixture", description: "Formulate a structural geopolymer concrete utilizing industrial slag to achieve zero-cement binder strength.", assigned: false, assignedTeam: null, assignedAt: null },
-      { id: "PRB-CVCV-02", category: "Civil + Civil", title: "Seismic Isolation Base Foundation for Critical Facilities", description: "Design a elastomeric elastomeric bearing foundation system to absorb lateral seismic shear waves.", assigned: false, assignedTeam: null, assignedAt: null },
+      { id: "PRB-CVCV-02", category: "Civil + Civil", title: "Seismic Isolation Base Foundation for Critical Facilities", description: "Design an elastomeric bearing foundation system to absorb lateral seismic shear waves.", assigned: false, assignedTeam: null, assignedAt: null },
 
       // Civil + CS
       { id: "PRB-CVCS-01", category: "Civil + CS", title: "Smart City Adaptive Traffic Control Sensor API", description: "Architect a real-time IoT gateway to adjust intersection signal timing based on optical vehicle queues.", assigned: false, assignedTeam: null, assignedAt: null },
@@ -923,11 +998,9 @@
       { id: "PRB-MCMC-02", category: "Mech + Mech", title: "Micro-Scale Stirling Engine Exhaust Waste Heat Harvester", description: "Engineer a high-delta-T Stirling cycle piston assembly converting engine exhaust heat directly to shaft power.", assigned: false, assignedTeam: null, assignedAt: null }
     ];
 
-    /* ==========================================================================
-       STORAGE & STATE MANAGEMENT
-       ========================================================================== */
-    const STORAGE_KEY_PROBLEMS = "HACKATHON_PROBLEMS_V3";
-    const STORAGE_KEY_TEAMS = "HACKATHON_TEAMS_V3";
+    /* STORAGE KEYS */
+    const STORAGE_KEY_PROBLEMS = "AYUSH_HACKATHON_PROBLEMS_V5";
+    const STORAGE_KEY_TEAMS = "AYUSH_HACKATHON_TEAMS_V5";
 
     let problems = [];
     let teams = [];
@@ -935,7 +1008,7 @@
     let isSpinning = false;
     let wheelRotation = 0;
 
-    const syncChannel = ("BroadcastChannel" in window) ? new BroadcastChannel("hackathon_spinner_sync") : null;
+    const syncChannel = ("BroadcastChannel" in window) ? new BroadcastChannel("ayush_spinner_sync") : null;
 
     if (syncChannel) {
       syncChannel.onmessage = (event) => {
@@ -995,9 +1068,7 @@
       }
     }
 
-    /* ==========================================================================
-       CATEGORY RESOLUTION ENGINE
-       ========================================================================== */
+    /* CATEGORY RESOLUTION */
     function computeCategory(b1, b2) {
       const pair = [b1, b2].sort();
       return `${pair[0]} + ${pair[1]}`;
@@ -1016,7 +1087,6 @@
 
       catTag.innerText = currentCategory;
 
-      // Check if team already exists and spun
       const existingTeam = teams.find(t => t.teamName.toLowerCase() === teamName.toLowerCase());
 
       if (existingTeam && existingTeam.assignedProblem) {
@@ -1035,7 +1105,6 @@
         statusMsg.innerHTML = "";
       }
 
-      // Count open problems for category
       const openProbs = problems.filter(p => p.category === currentCategory && !p.assigned);
       catStock.innerText = `Available Problems: ${openProbs.length}`;
 
@@ -1044,7 +1113,7 @@
         document.getElementById("spinBtn").disabled = true;
         statusMsg.innerHTML = `
           <div class="alert-banner alert-danger">
-            All problem statements for category <strong>${currentCategory}</strong> have been assigned. Please consult event organizers.
+            All problem statements for category <strong>${currentCategory}</strong> have been assigned. Please consult Ayush Technologies organizers.
           </div>
         `;
       } else {
@@ -1055,14 +1124,12 @@
       drawWheel();
     }
 
-    /* ==========================================================================
-       CANVAS WHEEL RENDERING & PHYSICS
-       ========================================================================== */
+    /* CANVAS WHEEL RENDERING */
     const canvas = document.getElementById("wheelCanvas");
     const ctx = canvas.getContext("2d");
 
     const sliceColors = [
-      "#1e3a8a", "#0284c7", "#059669", "#d97706", 
+      "#0f4c81", "#0284c7", "#15803d", "#b45309", 
       "#4f46e5", "#0891b2", "#16a34a", "#ca8a04"
     ];
 
@@ -1079,7 +1146,7 @@
       if (numSlices === 0) {
         ctx.beginPath();
         ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-        ctx.fillStyle = "#f1f5f9";
+        ctx.fillStyle = "#edf2f7";
         ctx.fill();
         ctx.strokeStyle = "#cbd5e1";
         ctx.lineWidth = 4;
@@ -1128,20 +1195,20 @@
 
       // Center Hub
       ctx.beginPath();
-      ctx.arc(centerX, centerY, 42, 0, 2 * Math.PI);
+      ctx.arc(centerX, centerY, 44, 0, 2 * Math.PI);
       ctx.fillStyle = "#ffffff";
       ctx.fill();
-      ctx.strokeStyle = "var(--primary)";
+      ctx.strokeStyle = "var(--brand-navy)";
       ctx.lineWidth = 4;
       ctx.stroke();
 
-      ctx.fillStyle = "var(--primary)";
+      ctx.fillStyle = "var(--brand-navy)";
       ctx.font = "bold 14px Space Grotesk";
       ctx.textAlign = "center";
       ctx.fillText("SPIN", centerX, centerY + 5);
     }
 
-    /* Web Audio API for Wheel Ticks */
+    /* Web Audio API */
     const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
     function playTickSound() {
@@ -1149,7 +1216,7 @@
       const osc = audioCtx.createOscillator();
       const gain = audioCtx.createGain();
       osc.type = "sine";
-      osc.frequency.setValueAtTime(500, audioCtx.currentTime);
+      osc.frequency.setValueAtTime(520, audioCtx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + 0.03);
       gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.03);
@@ -1257,7 +1324,7 @@
         updateUI();
 
         showAssignedTicket(targetProb, teamName, targetProb.assignedAt);
-        showBannerNotification(`Problem "${targetProb.title}" successfully assigned to team "${teamName}".`, "success");
+        showBannerNotification(`Problem "${targetProb.title}" locked for team "${teamName}".`, "success");
       }
     }
 
@@ -1285,11 +1352,11 @@
     }
 
     /* ==========================================================================
-       ORGANIZER DATA MANAGEMENT (EXPLICIT & CLEAR DELETION)
+       ORGANIZER DATA MANAGEMENT (STRICT & VERIFIED OPERABILITY)
        ========================================================================== */
     function renderAdminTable() {
       const tbody = document.getElementById("adminTableBody");
-      const search = document.getElementById("tableSearch").value.toLowerCase();
+      const search = document.getElementById("tableSearch").value.toLowerCase().trim();
       const catFilter = document.getElementById("tableCatFilter").value;
       const statusFilter = document.getElementById("tableStatusFilter").value;
 
@@ -1305,14 +1372,14 @@
       });
 
       if (filtered.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-light); padding: 1.5rem;">No problems match current filters.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" style="text-align: center; color: var(--text-light); padding: 1.5rem;">No problem statements match current filter criteria.</td></tr>`;
       } else {
         tbody.innerHTML = filtered.map(p => `
           <tr>
             <td><code>${p.id}</code></td>
             <td><strong>${p.category}</strong></td>
             <td>
-              <div style="font-weight:600;">${p.title}</div>
+              <div style="font-weight:600; color: var(--brand-navy);">${p.title}</div>
               <div style="font-size: 0.8rem; color: var(--text-muted);" title="${p.description}">
                 ${p.description.substring(0, 75)}...
               </div>
@@ -1322,7 +1389,7 @@
                 ? `<span class="badge badge-assigned">Assigned</span>` 
                 : `<span class="badge badge-open">Open</span>`}
             </td>
-            <td>${p.assignedTeam ? `<strong>${p.assignedTeam}</strong>` : `<span style="color: var(--text-light);">-</span>`}</td>
+            <td>${p.assignedTeam ? `<strong style="color: var(--brand-accent);">${p.assignedTeam}</strong>` : `<span style="color: var(--text-light);">-</span>`}</td>
             <td>
               <div style="display: flex; gap: 0.4rem;">
                 ${p.assigned ? `<button class="btn btn-sm" onclick="unassignProblem('${p.id}')">Unassign</button>` : ''}
@@ -1372,27 +1439,24 @@
       updateUI();
 
       document.getElementById("addProblemForm").reset();
-      showBannerNotification(`New problem statement "${title}" (${newId}) added successfully to category ${category}.`, "success");
+      showBannerNotification(`Problem "${title}" (${newId}) added successfully to category ${category}.`, "success");
     }
 
-    /* CLEAR DELETION FUNCTIONS */
+    /* CLEAR DELETION & RESET OPERABILITY */
     function deleteProblem(probId) {
       const prob = problems.find(p => p.id === probId);
       if (!prob) return;
 
-      if (!confirm(`Are you sure you want to permanently delete problem statement "${prob.title}" (${prob.id})?`)) {
+      if (!confirm(`Are you sure you want to permanently delete problem "${prob.title}" (${prob.id})?`)) {
         return;
       }
 
-      // Remove from problems list
       problems = problems.filter(p => p.id !== probId);
-
-      // Remove from teams list if assigned
       teams = teams.filter(t => !t.assignedProblem || t.assignedProblem.id !== probId);
 
       saveStateToStorage();
       updateUI();
-      showBannerNotification(`Problem statement ${probId} was permanently deleted.`, "danger");
+      showBannerNotification(`Problem ${probId} deleted successfully.`, "danger");
     }
 
     function unassignProblem(probId) {
@@ -1412,11 +1476,11 @@
 
       saveStateToStorage();
       updateUI();
-      showBannerNotification(`Assignment cleared for team "${teamName}". Problem statement is now OPEN.`, "info");
+      showBannerNotification(`Assignment cleared for team "${teamName}". Problem is now OPEN.`, "info");
     }
 
     function resetToInitialDefaults() {
-      if (!confirm("Warning: This will clear all custom problems and assignments, and restore default problems across all categories. Proceed?")) {
+      if (!confirm("Reset all problems to default bank and clear all assignments?")) {
         return;
       }
 
@@ -1428,11 +1492,11 @@
 
       saveStateToStorage();
       updateUI();
-      showBannerNotification("System successfully reset to default problem bank.", "info");
+      showBannerNotification("All problem statements reset to defaults.", "info");
     }
 
     function clearAllAssignmentsOnly() {
-      if (!confirm("Clear all assigned teams and restore all problem statements to OPEN status?")) {
+      if (!confirm("Clear all team assignments and make all problem statements OPEN?")) {
         return;
       }
 
@@ -1445,7 +1509,7 @@
       teams = [];
       saveStateToStorage();
       updateUI();
-      showBannerNotification("All team assignments have been cleared.", "info");
+      showBannerNotification("All team assignments cleared.", "info");
     }
 
     function exportAssignmentsCSV() {
@@ -1466,7 +1530,7 @@
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = `problem_assignments_${Date.now()}.csv`;
+      a.download = `ayush_tech_hackathon_assignments_${Date.now()}.csv`;
       a.click();
       URL.revokeObjectURL(url);
     }
